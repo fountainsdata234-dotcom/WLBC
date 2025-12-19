@@ -1,0 +1,548 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="light">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>WLBC | Winning City</title>
+
+    <!-- Fonts & Icons -->
+    <link
+      href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;600;800&display=swap"
+      rel="stylesheet"
+    />
+    <link
+      rel="stylesheet"
+      href="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.css"
+    />
+    <script src="https://unpkg.com/lucide@latest"></script>
+    <link rel="stylesheet" href="style.css" />
+  </head>
+  <body>
+    <!-- Cube Pre-loader -->
+    <div id="loader">
+      <!-- Interactive 3D Cube -->
+      <div class="cube-container">
+        <div class="cube">
+          <div class="face front">
+            <img
+              src="image/ChatGPT Image Dec 18, 2025, 07_34_29 PM.png"
+              alt="Face 1"
+            />
+          </div>
+          <div class="face back">
+            <img src="image/1749187773105.jpg" alt="Face 2" />
+          </div>
+          <div class="face right">
+            <img src="image/1749187998627.jpg" alt="Face 3" />
+          </div>
+          <div class="face left">
+            <img src="image/1749187985514.jpg" alt="Face 4" />
+          </div>
+          <div class="face top"></div>
+          <div class="face bottom"></div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Smart Navbar -->
+    <nav class="navbar" id="main-nav">
+      <div class="nav-container">
+        <div class="logo">
+          <img src="image/logo.png" alt="Logo" />
+          <span>WLBC</span>
+        </div>
+
+        <ul class="nav-links">
+          <li><a href="#home" class="nav-item active">Home</a></li>
+          <li><a href="#about" class="nav-item">About</a></li>
+          <li><a href="#media" class="nav-item">Media</a></li>
+          <li class="nav-item dropdown">
+            <a href="#" class="dropbtn"
+              >Useful Links
+              <i data-lucide="chevron-down" class="chevron-icon"></i
+            ></a>
+            <div class="dropdown-menu">
+              <a href="#">Our Vision</a>
+              <a href="#">Weekly Programs</a>
+              <a href="#">Foundation School</a>
+              <a href="#">E-Library</a>
+            </div>
+          </li>
+          <!-- Mobile-only theme toggle -->
+          <li class="nav-item-mobile-only">
+            <button
+              id="theme-toggle-mobile"
+              class="theme-toggle-btn"
+              title="Toggle Theme"
+            >
+              <span>Theme</span>
+              <i data-lucide="sun" class="sun-icon"></i>
+              <i data-lucide="moon" class="moon-icon"></i>
+            </button>
+          </li>
+        </ul>
+
+        <div class="nav-actions">
+          <button
+            id="theme-toggle-desktop"
+            class="theme-toggle-btn"
+            title="Toggle Theme"
+          >
+            <i data-lucide="sun" class="sun-icon"></i>
+            <i data-lucide="moon" class="moon-icon"></i>
+          </button>
+          <div class="burger">
+            <span></span>
+            <span></span>
+            <span></span>
+          </div>
+        </div>
+      </div>
+    </nav>
+
+    <!-- Full Screen Video Carousel -->
+    <section class="hero-section">
+      <div class="swiper heroSwiper">
+        <div class="swiper-wrapper">
+          <!-- Slide 1 -->
+          <div class="swiper-slide">
+            <div class="video-container">
+              <video
+                autoplay
+                muted
+                loop
+                playsinline
+                src="video/VID-20251003-WA0015.mp4"
+              ></video>
+            </div>
+            <div class="hero-content">
+              <h1 class="typewriter" data-text="GOD OUR RIGHTEOUSNESS."></h1>
+              <p class="fade-in">Experience God's grace.</p>
+              <div class="hero-btns">
+                <button class="btn btn-primary">Give Online</button>
+                <button class="btn btn-outline">Prayer Request</button>
+              </div>
+            </div>
+          </div>
+          <!-- Slide 2 -->
+          <div class="swiper-slide">
+            <div class="video-container">
+              <video
+                autoplay
+                muted
+                loop
+                playsinline
+                src="video/VID-20251003-WA0016.mp4"
+              ></video>
+            </div>
+            <div class="hero-content">
+              <h1 class="typewriter" data-text="WINNING CITY."></h1>
+              <p>Join us in our mission to partNER with God here on earth.</p>
+              <div class="hero-btns">
+                <button class="btn btn-primary">Give Online</button>
+                <button class="btn btn-outline">Prayer Request</button>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="swiper-pagination"></div>
+      </div>
+      <div class="scroll-indicator">
+        <div class="mouse"></div>
+      </div>
+    </section>
+
+    <!-- Main Content Area -->
+    <main class="content-wrapper">
+      <!-- Live Stream Section -->
+      <section class="live-event-section section-padding">
+        <div class="container">
+          <div class="live-card">
+            <div class="live-image-box">
+              <img src="image/live.jpg" alt="Live Event" />
+              <div class="pulse-icon"><i data-lucide="play"></i></div>
+            </div>
+            <div class="live-info">
+              <span class="badge">Live Now</span>
+              <h2>WATCH WLBC EVENTS LIVE</h2>
+              <p>
+                Join our global congregation online. Don't miss out on the
+                prophetic word for the season.
+              </p>
+              <button class="live-btn-main">
+                Stream Now <i data-lucide="arrow-right"></i>
+              </button>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- Placeholder for future sections -->
+      <section id="expandable-sections">
+        <!-- Church Slider Section -->
+        <section class="church-slider-wrap">
+          <div class="slider-container" id="churchSlider">
+            <!-- Card 1 -->
+            <div class="card-item">
+              <a href="#" class="card-link">
+                <div
+                  class="card-image"
+                  style="
+                    background-image: url('https://images.unsplash.com/photo-1438232992991-995b7058bbb3?auto=format&fit=crop&w=800&q=80');
+                  "
+                ></div>
+                <div class="card-content">
+                  <h3>Sunday Service</h3>
+                  <p
+                    class="typewriter"
+                    data-text="Experience the power of worship every Sunday morning. Join our community as we praise together."
+                  ></p>
+                </div>
+              </a>
+            </div>
+
+            <!-- Card 2 -->
+            <div class="card-item">
+              <a href="#" class="card-link">
+                <div
+                  class="card-image"
+                  style="
+                    background-image: url('https://images.unsplash.com/photo-1511795409834-ef04bbd61622?auto=format&fit=crop&w=800&q=80');
+                  "
+                ></div>
+                <div class="card-content">
+                  <h3>Youth Ministry</h3>
+                  <p
+                    class="typewriter"
+                    data-text="Empowering the next generation to lead with faith and love. Friday nights at 7PM."
+                  ></p>
+                </div>
+              </a>
+            </div>
+
+            <!-- Card 3 -->
+            <div class="card-item">
+              <a href="#" class="card-link">
+                <div
+                  class="card-image"
+                  style="
+                    background-image: url('https://images.unsplash.com/photo-1544427928-c49cdfebf194?auto=format&fit=crop&w=800&q=80');
+                  "
+                ></div>
+                <div class="card-content">
+                  <h3>Bible Study</h3>
+                  <p
+                    class="typewriter"
+                    data-text="Deepen your understanding of the Word. Mid-week sessions for all age groups."
+                  ></p>
+                </div>
+              </a>
+            </div>
+
+            <!-- Card 4 -->
+            <div class="card-item">
+              <a href="#" class="card-link">
+                <div
+                  class="card-image"
+                  style="
+                    background-image: url('https://images.unsplash.com/photo-1445077100181-a33e9ac94db0?auto=format&fit=crop&w=800&q=80');
+                  "
+                ></div>
+                <div class="card-content">
+                  <h3>Community Outreach</h3>
+                  <p
+                    class="typewriter"
+                    data-text="Being the hands and feet of Jesus in our local city. Volunteer with us today."
+                  ></p>
+                </div>
+              </a>
+            </div>
+
+            <!-- Card 5 -->
+            <div class="card-item">
+              <a href="#" class="card-link">
+                <div
+                  class="card-image"
+                  style="
+                    background-image: url('https://images.unsplash.com/photo-1529070532779-19ed3c5e55d3?auto=format&fit=crop&w=800&q=80');
+                  "
+                ></div>
+                <div class="card-content">
+                  <h3>Prayer Request</h3>
+                  <p
+                    class="typewriter"
+                    data-text="You are not alone. Submit your prayer requests and our team will pray for you."
+                  ></p>
+                </div>
+              </a>
+            </div>
+          </div>
+
+          <!-- Scroll Indicator Line -->
+          <div class="scroll-indicator-container">
+            <div class="scroll-line" id="scrollLine"></div>
+          </div>
+        </section>
+
+        <style>
+          :root {
+            --primary-color: #2c3e50;
+            --accent-color: #e67e22;
+          }
+
+          .church-slider-wrap {
+            padding: 60px 20px;
+            font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
+            overflow: hidden;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            background: #f9f9f9;
+          }
+
+          .slider-container {
+            display: flex;
+            gap: 25px;
+            overflow-x: auto;
+            padding: 20px 0;
+            width: 100%;
+            max-width: 1200px;
+            scroll-snap-type: x mandatory;
+            scrollbar-width: none; /* Hide default scrollbar */
+          }
+
+          .slider-container::-webkit-scrollbar {
+            display: none;
+          }
+
+          .card-item {
+            min-width: 300px;
+            height: 450px;
+            background: white;
+            border-radius: 15px;
+            overflow: hidden;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+            scroll-snap-align: center;
+            transition: transform 0.3s ease;
+          }
+
+          .card-item:hover {
+            transform: translateY(-10px);
+          }
+
+          .card-link {
+            text-decoration: none;
+            color: inherit;
+            display: block;
+            height: 100%;
+          }
+
+          .card-image {
+            height: 200px;
+            background-size: cover;
+            background-position: center;
+          }
+
+          .card-content {
+            padding: 20px;
+          }
+
+          .card-content h3 {
+            margin: 0 0 10px 0;
+            color: var(--primary-color);
+            font-size: 1.5rem;
+          }
+
+          .typewriter {
+            font-size: 1rem;
+            line-height: 1.6;
+            color: #666;
+            min-height: 100px;
+            border-right: 2px solid var(--accent-color);
+            padding-right: 5px;
+            display: inline;
+          }
+
+          /* Scroll Indicator Styles */
+          .scroll-indicator-container {
+            width: 200px;
+            height: 4px;
+            background: #ddd;
+            margin-top: 30px;
+            border-radius: 2px;
+            position: relative;
+          }
+
+          .scroll-line {
+            position: absolute;
+            height: 100%;
+            width: 30%;
+            background: var(--accent-color);
+            border-radius: 2px;
+            transition: left 0.1s ease-out;
+          }
+
+          @media (max-width: 768px) {
+            .card-item {
+              min-width: 80%;
+            }
+          }
+        </style>
+
+        <script>
+          // Audio Context Setup for "Tick" Sound
+          const AudioCtx = window.AudioContext || window.webkitAudioContext;
+          const audioCtx = new AudioCtx();
+
+          function playTick() {
+            if (audioCtx.state === "suspended") audioCtx.resume();
+
+            const oscillator = audioCtx.createOscillator();
+            const gainNode = audioCtx.createGain();
+
+            oscillator.type = "sine"; // Soft tick
+            oscillator.frequency.setValueAtTime(1200, audioCtx.currentTime);
+
+            gainNode.gain.setValueAtTime(0.05, audioCtx.currentTime);
+            gainNode.gain.exponentialRampToValueAtTime(
+              0.01,
+              audioCtx.currentTime + 0.05
+            );
+
+            oscillator.connect(gainNode);
+            gainNode.connect(audioCtx.destination);
+
+            oscillator.start();
+            oscillator.stop(audioCtx.currentTime + 0.05);
+          }
+
+          // Typewriter Logic
+          const typewriterElements = document.querySelectorAll(
+            ".church-slider-wrap .typewriter"
+          );
+
+          typewriterElements.forEach((el) => {
+            const fullText = el.getAttribute("data-text");
+            let isDeleting = false;
+            let textIdx = 0;
+            let isVisible = false;
+
+            // Observer to check if card is in view
+            const observer = new IntersectionObserver(
+              (entries) => {
+                isVisible = entries[0].isIntersecting;
+              },
+              { threshold: 0.5 }
+            );
+
+            observer.observe(el);
+
+            function type() {
+              const currentText = isDeleting
+                ? fullText.substring(0, textIdx--)
+                : fullText.substring(0, textIdx++);
+
+              el.innerText = currentText;
+
+              // Play sound only if visible and typing
+              if (isVisible && !isDeleting && textIdx < fullText.length) {
+                playTick();
+              }
+
+              let typeSpeed = isDeleting ? 30 : 70;
+
+              if (!isDeleting && textIdx === fullText.length + 1) {
+                typeSpeed = 2000; // Pause at end
+                isDeleting = true;
+              } else if (isDeleting && textIdx === 0) {
+                isDeleting = false;
+                typeSpeed = 500; // Pause before restarting
+              }
+
+              setTimeout(type, typeSpeed);
+            }
+
+            type();
+          });
+
+          // Scroll Indicator Logic
+          const slider = document.getElementById("churchSlider");
+          const scrollLine = document.getElementById("scrollLine");
+
+          slider.addEventListener("scroll", () => {
+            const scrollPercentage =
+              (slider.scrollLeft / (slider.scrollWidth - slider.clientWidth)) *
+              100;
+            scrollLine.style.left = scrollPercentage * 0.7 + "%";
+          });
+
+          // Pause sound when tab is not visible
+          document.addEventListener("visibilitychange", () => {
+            if (document.hidden) audioCtx.suspend();
+          });
+        </script>
+      </section>
+    </main>
+
+    <!-- Back to Top Button -->
+    <button id="back-to-top" title="Go to top">
+      <i data-lucide="arrow-up"></i>
+    </button>
+
+    <!-- Animated Footer -->
+    <footer class="footer">
+      <div class="container">
+        <div class="footer-top">
+          <div class="pastor-card">
+            <div class="swiper pastorSwiper">
+              <div class="swiper-wrapper">
+                <div class="swiper-slide">
+                  <img src="https://via.placeholder.com/400x500" alt="Pastor" />
+                </div>
+                <div class="swiper-slide">
+                  <img src="https://via.placeholder.com/400x500" alt="Pastor" />
+                </div>
+                <div class="swiper-slide">
+                  <img src="https://via.placeholder.com/400x500" alt="Pastor" />
+                </div>
+              </div>
+            </div>
+            <div class="pastor-meta">
+              <h4>REV. SG EROCHUKWU</h4>
+              <p>Senior Overseer of WLBC</p>
+            </div>
+          </div>
+
+          <div class="footer-nav">
+            <h5>Quick Links</h5>
+            <ul>
+              <li><a href="#">Support Us</a></li>
+              <li><a href="#">Join a Dept</a></li>
+              <li><a href="#">Branches</a></li>
+              <li><a href="#">Testimonies</a></li>
+            </ul>
+          </div>
+
+          <div class="footer-social">
+            <h5>Social Connect</h5>
+            <div class="swiper socialSwiper">
+              <div class="swiper-wrapper">
+                <div class="swiper-slide"><i data-lucide="facebook"></i></div>
+                <div class="swiper-slide"><i data-lucide="instagram"></i></div>
+                <div class="swiper-slide"><i data-lucide="youtube"></i></div>
+                <div class="swiper-slide"><i data-lucide="twitter"></i></div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </footer>
+
+    <!-- Scripts -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/gsap.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/ScrollTrigger.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/TextPlugin.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.js"></script>
+    <script src="script.js"></script>
+  </body>
+</html>
