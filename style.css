@@ -1901,9 +1901,12 @@ body {
 }
 
 .footer-inner-content {
-  padding: 60px 10% 20px 10%;
-  max-width: 1200px;
+  padding: 60px 5% 20px 5%;
+  max-width: 1400px;
   margin: 0 auto;
+  display: flex;
+  gap: 50px;
+  align-items: flex-start;
 }
 
 /* --- UI DESIGN --- */
@@ -1922,7 +1925,6 @@ body {
 
 .f-logo {
   height: 100%;
-  filter: brightness(0) invert(1);
 }
 
 .footer-word-carousel {
@@ -2001,6 +2003,95 @@ body {
   padding-top: 20px;
   font-size: 0.8rem;
   color: #666;
+}
+
+/* --- FOUNDER SECTION --- */
+.footer-founder-aside {
+  flex: 0 0 300px;
+  position: relative;
+}
+
+.founder-card {
+  position: relative;
+  border-radius: 15px;
+  overflow: hidden;
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
+}
+
+.founder-img-box {
+  width: 100%;
+  height: 400px;
+}
+
+.founder-img-box img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  transition: transform 0.5s ease;
+}
+
+.founder-card:hover .founder-img-box img {
+  transform: scale(1.05);
+}
+
+.founder-badge {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  width: 100%;
+  background: linear-gradient(to top, rgba(26, 67, 62, 0.95), transparent);
+  padding: 30px 20px 20px;
+  text-align: center;
+}
+
+.founder-title {
+  display: block;
+  font-family: "New Rocker", system-ui;
+  font-size: 1.1rem;
+  letter-spacing: 3px;
+  margin-bottom: 5px;
+  text-transform: uppercase;
+  opacity: 0;
+  transform: translateY(10px);
+  animation: fadeInUp 0.8s forwards 0.3s;
+}
+
+.founder-name {
+  display: block;
+  color: white;
+  font-family: "New Rocker", system-ui;
+  font-weight: 400;
+  font-style: normal;
+  font-size: 1.5rem;
+
+  opacity: 0;
+  transform: translateY(10px);
+  animation: fadeInUp 0.8s forwards 0.6s;
+}
+
+@keyframes fadeInUp {
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.footer-right-panel {
+  flex: 1;
+  width: 100%;
+}
+
+@media (max-width: 992px) {
+  .footer-inner-content {
+    flex-direction: column;
+    align-items: center;
+  }
+
+  .footer-founder-aside {
+    width: 100%;
+    max-width: 400px;
+    margin-bottom: 40px;
+  }
 }
 
 /* --- RESPONSIVE --- */
