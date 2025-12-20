@@ -5,6 +5,45 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>WLBC | Winning City</title>
 
+    <!-- SEO Meta Tags -->
+    <meta
+      name="description"
+      content="Welcome to Winning City (WLBC) - God Our Righteousness. Join us for life-changing sermons, worship, and community in Aba, Abia State led by Rev. S.G Erochukwu."
+    />
+    <meta
+      name="keywords"
+      content="Winning City, WLBC, Winning Life Bible Church, Church in Aba, Rev S.G Erochukwu, Christian Ministry, Sermons, Worship, God Our Righteousness, Abia State Church"
+    />
+    <meta name="author" content="WLBC IT Team" />
+    <meta name="robots" content="index, follow" />
+
+    <!-- Open Graph / Facebook -->
+    <meta property="og:type" content="website" />
+    <meta
+      property="og:title"
+      content="WLBC | Winning City - God Our Righteousness"
+    />
+    <meta
+      property="og:description"
+      content="Experience God's grace at Winning City. Join us for powerful worship and the word."
+    />
+    <meta property="og:image" content="image/Retouch_20241018_160117602.png" />
+
+    <!-- Twitter -->
+    <meta property="twitter:card" content="summary_large_image" />
+    <meta
+      property="twitter:title"
+      content="WLBC | Winning City - God Our Righteousness"
+    />
+    <meta
+      property="twitter:description"
+      content="Experience God's grace at Winning City. Join us for powerful worship and the word."
+    />
+    <meta
+      property="twitter:image"
+      content="image/Retouch_20241018_160117602.png"
+    />
+
     <link
       rel="icon"
       type="image/png"
@@ -257,6 +296,20 @@
       #divine-loader.fade-up {
         transform: translateY(-100%);
       }
+
+      /* --- HERO SLIDER CONTENT ANIMATION FIX --- */
+      .swiper-slide .hero-content {
+        opacity: 0;
+        transform: translateY(20px);
+        transition: opacity 0.3s ease, transform 0.3s ease;
+        pointer-events: none;
+      }
+      .swiper-slide-active .hero-content {
+        opacity: 1;
+        transform: translateY(0);
+        transition: opacity 0.8s ease 0.5s, transform 0.8s ease 0.5s;
+        pointer-events: auto;
+      }
     </style>
 
     <script>
@@ -296,7 +349,7 @@
     <nav class="navbar" id="main-nav">
       <div class="nav-container">
         <div class="logo">
-          <img src="image/logo.png" alt="Logo" />
+          <img src="image/logo.png" alt="Winning City WLBC Logo" />
           <span>WLBC</span>
         </div>
 
@@ -349,8 +402,35 @@
     </nav>
 
     <!-- Full Screen Video Carousel -->
-    <section class="hero-section">
-      <div class="swiper heroSwiper">
+    <section class="hero-section" style="position: relative">
+      <!-- Continuous Background Video -->
+      <div
+        class="video-container"
+        style="
+          position: absolute;
+          top: 0;
+          left: 0;
+          width: 100%;
+          height: 100%;
+          z-index: 0;
+          overflow: hidden;
+        "
+      >
+        <iframe
+          src="https://www.youtube.com/embed/aiHgi71pBbE?autoplay=1&mute=1&loop=1&playlist=aiHgi71pBbE&controls=0&showinfo=0&rel=0&playsinline=1"
+          style="
+            width: 100%;
+            height: 100%;
+            border: none;
+            pointer-events: none;
+            filter: blur(5px);
+            transform: scale(1.1);
+          "
+          allow="autoplay; encrypted-media"
+          allowfullscreen
+        ></iframe>
+      </div>
+      <div class="swiper heroSwiper" style="position: relative; z-index: 1">
         <!-- Interactive 3D Cube for Hero Section -->
         <div class="cube-container">
           <div class="cube">
@@ -376,15 +456,6 @@
         <div class="swiper-wrapper">
           <!-- Slide 1 -->
           <div class="swiper-slide">
-            <div class="video-container">
-              <video
-                autoplay
-                muted
-                loop
-                playsinline
-                src="https://youtu.be/aiHgi71pBbE?si=SvymOFzOEV3yGY8h"
-              ></video>
-            </div>
             <div class="hero-content">
               <h1 class="typewriter" data-text="GOD OUR RIGHTEOUSNESS."></h1>
               <p class="fade-in">Experience God's grace.</p>
@@ -396,18 +467,9 @@
           </div>
           <!-- Slide 2 -->
           <div class="swiper-slide">
-            <div class="video-container">
-              <video
-                autoplay
-                muted
-                loop
-                playsinline
-                src="https://youtu.be/aiHgi71pBbE?si=SvymOFzOEV3yGY8h"
-              ></video>
-            </div>
             <div class="hero-content">
               <h1 class="typewriter" data-text="WINNING CITY."></h1>
-              <p>Join us in our mission to partNER with God here on earth.</p>
+              <p>Join us in our mission to partner with God here on earth.</p>
               <div class="hero-btns">
                 <button class="btn btn-primary">Give Online</button>
                 <button class="btn btn-outline">Prayer Request</button>
@@ -897,7 +959,11 @@
               <div class="footer-logo-box">
                 <!-- Placeholder for your Logo -->
                 <div class="logo-space">
-                  <img src="image/logo.png" alt="Winning City" class="f-logo" />
+                  <img
+                    src="image/logo.png"
+                    alt="Winning City Church Logo"
+                    class="f-logo"
+                  />
                 </div>
                 <p>WINNING CITY: GOD IS OUR RIGHTEOUSNESS.</p>
               </div>
@@ -1028,4 +1094,3 @@
     <script src="script.js"></script>
   </body>
 </html>
-
