@@ -177,38 +177,48 @@ document.addEventListener("DOMContentLoaded", () => {
   }
   // --- Swiper Initializations ---
 
-  const heroSwiper = new Swiper(".heroSwiper", {
-    loop: true,
-    effect: "fade",
-    autoplay: {
-      delay: 5000,
-      disableOnInteraction: false,
-    },
-    pagination: {
-      el: ".swiper-pagination",
-      clickable: true,
-    },
-    on: {
-      init: animateActiveSlide,
-      slideChangeTransitionStart: animateActiveSlide,
-    },
-  });
+  if (document.querySelector(".heroSwiper")) {
+    const heroSwiper = new Swiper(".heroSwiper", {
+      loop: false,
+      effect: "fade",
+      autoplay: {
+        delay: 5000,
+        disableOnInteraction: false,
+      },
+      pagination: {
+        el: ".swiper-pagination",
+        clickable: true,
+      },
+      navigation: {
+        nextEl: ".swiper-button-next",
+        prevEl: ".swiper-button-prev",
+      },
+      on: {
+        init: animateActiveSlide,
+        slideChangeTransitionStart: animateActiveSlide,
+      },
+    });
+  }
 
-  const pastorSwiper = new Swiper(".pastorSwiper", {
-    effect: "cards",
-    grabCursor: true,
-    loop: true,
-  });
+  if (document.querySelector(".pastorSwiper")) {
+    const pastorSwiper = new Swiper(".pastorSwiper", {
+      effect: "cards",
+      grabCursor: true,
+      loop: true,
+    });
+  }
 
-  const socialSwiper = new Swiper(".socialSwiper", {
-    direction: "vertical",
-    loop: true,
-    autoplay: {
-      delay: 2500,
-      disableOnInteraction: false,
-    },
-    slidesPerView: 1,
-  });
+  if (document.querySelector(".socialSwiper")) {
+    const socialSwiper = new Swiper(".socialSwiper", {
+      direction: "vertical",
+      loop: true,
+      autoplay: {
+        delay: 2500,
+        disableOnInteraction: false,
+      },
+      slidesPerView: 1,
+    });
+  }
 
   // --- GSAP Animations ---
   gsap.from(".fade-in", { duration: 1, opacity: 0, y: 20, delay: 0.5 });
@@ -494,3 +504,66 @@ function rotateWords() {
 }
 
 setInterval(rotateWords, 4000);
+
+// --- Ripple Effect for About Page Buttons ---
+document.querySelectorAll(".glitch-btn").forEach((btn) => {
+  btn.addEventListener("click", function (e) {
+    // Create ripple element
+    const ripple = document.createElement("span");
+    ripple.classList.add("ripple");
+
+    // Position ripple
+    const rect = btn.getBoundingClientRect();
+    const size = Math.max(rect.width, rect.height);
+    ripple.style.width = ripple.style.height = `${size}px`;
+    ripple.style.left = `${e.clientX - rect.left - size / 2}px`;
+    ripple.style.top = `${e.clientY - rect.top - size / 2}px`;
+
+    // Add and remove
+    btn.appendChild(ripple);
+    setTimeout(() => ripple.remove(), 600);
+  });
+});
+
+// --- ABOUT PAGE DOOR TRANSITION LOGIC ---
+function openSection(sectionId) {
+  const door = document.getElementById("transition-door");
+  const intro = document.getElementById("intro-section");
+  const targetSection = document.getElementById(sectionId);
+
+  // 1. Close the door (Slide Down)
+  door.classList.add("closed");
+
+  // 2. Wait for door to close, then swap content
+  setTimeout(() => {
+    intro.style.display = "none";
+    // Hide all sections first
+    document
+      .querySelectorAll(".content-section")
+      .forEach((sec) => sec.classList.add("hidden-section"));
+    // Show target
+    targetSection.classList.remove("hidden-section");
+
+    // 3. Open the door (Slide Up/Away)
+    door.classList.remove("closed");
+  }, 800); // Matches CSS transition time
+}
+
+function closeSection() {
+  const door = document.getElementById("transition-door");
+  const intro = document.getElementById("intro-section");
+
+  // 1. Close door
+  door.classList.add("closed");
+
+  setTimeout(() => {
+    // 2. Swap back to intro
+    document
+      .querySelectorAll(".content-section")
+      .forEach((sec) => sec.classList.add("hidden-section"));
+    intro.style.display = "flex"; // Intro uses flex
+
+    // 3. Open door
+    door.classList.remove("closed");
+  }, 800);
+}
