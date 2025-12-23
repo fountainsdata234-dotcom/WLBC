@@ -299,11 +299,13 @@ typewriterElements.forEach((el) => {
 const slider = document.getElementById("churchSlider");
 const scrollLine = document.getElementById("scrollLine");
 
-slider.addEventListener("scroll", () => {
-  const scrollPercentage =
-    (slider.scrollLeft / (slider.scrollWidth - slider.clientWidth)) * 100;
-  scrollLine.style.left = scrollPercentage * 0.7 + "%";
-});
+if (slider && scrollLine) {
+  slider.addEventListener("scroll", () => {
+    const scrollPercentage =
+      (slider.scrollLeft / (slider.scrollWidth - slider.clientWidth)) * 100;
+    scrollLine.style.left = scrollPercentage * 0.7 + "%";
+  });
+}
 
 // Drag to scroll for Church Slider
 if (slider) {
@@ -368,7 +370,9 @@ const totalIdxEl = document.getElementById("totalIdx");
 let currentIndex = 1;
 let isAnimating = false;
 
-totalIdxEl.innerText = cards.length;
+if (totalIdxEl) {
+  totalIdxEl.innerText = cards.length;
+}
 
 function arrangeDeck() {
   cards.forEach((card, i) => {
@@ -436,15 +440,21 @@ function startSilentTypewriter(card) {
 }
 
 // Click & Touch
-shuffleBtn.addEventListener("click", doShuffle);
+if (shuffleBtn) {
+  shuffleBtn.addEventListener("click", doShuffle);
+}
 
-let touchStart = 0;
-document
-  .getElementById("testimonialDeck")
-  .addEventListener("touchstart", (e) => (touchStart = e.touches[0].clientX));
-document.getElementById("testimonialDeck").addEventListener("touchend", (e) => {
-  if (Math.abs(touchStart - e.changedTouches[0].clientX) > 50) doShuffle();
-});
+const testimonialDeck = document.getElementById("testimonialDeck");
+if (testimonialDeck) {
+  let touchStart = 0;
+  testimonialDeck.addEventListener(
+    "touchstart",
+    (e) => (touchStart = e.touches[0].clientX)
+  );
+  testimonialDeck.addEventListener("touchend", (e) => {
+    if (Math.abs(touchStart - e.changedTouches[0].clientX) > 50) doShuffle();
+  });
+}
 
 // Init
 arrangeDeck();
@@ -475,23 +485,25 @@ document.querySelectorAll(".step-header").forEach((button) => {
 const footer = document.getElementById("holyFooter");
 const sensor = document.getElementById("footer-sensor");
 
-const observer = new IntersectionObserver(
-  (entries) => {
-    entries.forEach((entry) => {
-      if (entry.isIntersecting) {
-        // When sensor is seen at the bottom, reveal the footer
-        footer.classList.add("reveal");
-      } else {
-        // If you want it to hide again when scrolling up, keep this.
-        // If you want it to stay revealed once found, comment this out:
-        // footer.classList.remove('reveal');
-      }
-    });
-  },
-  { threshold: 0.1 }
-);
+if (footer && sensor) {
+  const footerObserver = new IntersectionObserver(
+    (entries) => {
+      entries.forEach((entry) => {
+        if (entry.isIntersecting) {
+          // When sensor is seen at the bottom, reveal the footer
+          footer.classList.add("reveal");
+        } else {
+          // If you want it to hide again when scrolling up, keep this.
+          // If you want it to stay revealed once found, comment this out:
+          // footer.classList.remove('reveal');
+        }
+      });
+    },
+    { threshold: 0.1 }
+  );
 
-observer.observe(sensor);
+  footerObserver.observe(sensor);
+}
 
 // 2. CAROUSEL LOGIC
 const wordCards = document.querySelectorAll(".word-card");
