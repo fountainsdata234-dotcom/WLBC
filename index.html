@@ -355,7 +355,7 @@
 
         <ul class="nav-links">
           <li><a href="#home" class="nav-item active">Home</a></li>
-          <li><a href="#about" class="nav-item">About</a></li>
+          <li><a href="about.html" class="nav-item">About</a></li>
           <li><a href="#media" class="nav-item">Media</a></li>
           <li class="nav-item dropdown">
             <a href="#" class="dropbtn"
@@ -363,10 +363,11 @@
               <i data-lucide="chevron-down" class="chevron-icon"></i
             ></a>
             <div class="dropdown-menu">
-              <a href="#">Our Vision</a>
-              <a href="#">Weekly Programs</a>
-              <a href="#">Foundation School</a>
-              <a href="#">E-Library</a>
+              <a href="#">Rev S.G Erochukwu</a>
+              <a href="#">Event Calender</a>
+              <a href="#">Prayer Request</a>
+              <a href="#">Contact Us</a>
+              <a href="#">Priavcy Policy</a>
             </div>
           </li>
           <!-- Mobile-only theme toggle -->
@@ -403,33 +404,6 @@
 
     <!-- Full Screen Video Carousel -->
     <section class="hero-section" style="position: relative">
-      <!-- Continuous Background Video -->
-      <div
-        class="video-container"
-        style="
-          position: absolute;
-          top: 0;
-          left: 0;
-          width: 100%;
-          height: 100%;
-          z-index: 0;
-          overflow: hidden;
-        "
-      >
-        <iframe
-          src="https://www.youtube.com/embed/aiHgi71pBbE?autoplay=1&mute=1&loop=1&playlist=aiHgi71pBbE&controls=0&showinfo=0&rel=0&playsinline=1"
-          style="
-            width: 100%;
-            height: 100%;
-            border: none;
-            pointer-events: none;
-            filter: blur(5px);
-            transform: scale(1.1);
-          "
-          allow="autoplay; encrypted-media"
-          allowfullscreen
-        ></iframe>
-      </div>
       <div class="swiper heroSwiper" style="position: relative; z-index: 1">
         <!-- Interactive 3D Cube for Hero Section -->
         <div class="cube-container">
@@ -456,6 +430,19 @@
         <div class="swiper-wrapper">
           <!-- Slide 1 -->
           <div class="swiper-slide">
+            <!-- Video Background 1 -->
+            <div class="slide-video-bg">
+              <iframe
+                src="https://www.youtube.com/embed/aiHgi71pBbE?autoplay=1&mute=1&controls=0&loop=1&playlist=aiHgi71pBbE&playsinline=1"
+                title="Background Video 2"
+                frameborder="0"
+                allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+                allowfullscreen
+              ></iframe>
+              <!-- Overlay to ensure text readability -->
+              <div class="video-overlay"></div>
+            </div>
+
             <div class="hero-content">
               <h1 class="typewriter" data-text="GOD OUR RIGHTEOUSNESS."></h1>
               <p class="fade-in">Experience God's grace.</p>
@@ -467,6 +454,19 @@
           </div>
           <!-- Slide 2 -->
           <div class="swiper-slide">
+            <!-- Video Background 2 -->
+            <div class="slide-video-bg">
+              <iframe
+                src="https://www.youtube.com/embed/aiHgi71pBbE?autoplay=1&mute=1&controls=0&loop=1&playlist=aiHgi71pBbE&playsinline=1"
+                title="Background Video 3"
+                frameborder="0"
+                allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+                allowfullscreen
+              ></iframe>
+              <!-- Overlay to ensure text readability -->
+              <div class="video-overlay"></div>
+            </div>
+
             <div class="hero-content">
               <h1 class="typewriter" data-text="WINNING CITY."></h1>
               <p>Join us in our mission to partner with God here on earth.</p>
@@ -478,6 +478,8 @@
           </div>
         </div>
         <div class="swiper-pagination"></div>
+        <div class="swiper-button-next"></div>
+        <div class="swiper-button-prev"></div>
       </div>
       <div class="scroll-indicator">
         <div class="mouse"></div>
