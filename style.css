@@ -1942,6 +1942,8 @@ body {
   background: var(--holy-teal);
   color: white;
   font-family: "Segoe UI", sans-serif;
+  z-index: 10; /* Ensure it sits above backgrounds */
+  position: relative;
 }
 
 /* This class is added by JS when the bottom is reached */
@@ -1951,7 +1953,7 @@ body {
 }
 
 .footer-grow-wrapper {
-  overflow: hidden; /* Content stays hidden while expanding */
+  overflow: hidden; /* xContent stays hidden while expanding */
 }
 
 .footer-inner-content {
