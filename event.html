@@ -1,0 +1,398 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="light">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Event Calendar | Winning City</title>
+    <link
+      rel="icon"
+      type="image/x-icon"
+      href="image/Retouch_20241018_160117602.png"
+    />
+
+    <!-- Fonts & Icons -->
+    <link
+      href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;600;800&family=Playfair+Display:ital,wght@0,700;1,400&display=swap"
+      rel="stylesheet"
+    />
+    <script src="https://unpkg.com/lucide@latest"></script>
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.css"
+    />
+
+    <!-- FullCalendar CSS -->
+    <script src="https://cdn.jsdelivr.net/npm/fullcalendar@6.1.8/index.global.min.js"></script>
+
+    <!-- Site Styles -->
+    <link rel="stylesheet" href="style.css" />
+    <link rel="stylesheet" href="event.css" />
+
+    <style>
+      /* Custom override for event page background */
+      .page-bg {
+        position: fixed;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        background: radial-gradient(
+          circle at 50% 50%,
+          #1a433e 0%,
+          #0d1b1a 100%
+        );
+        z-index: -1;
+      }
+
+      /* Ensure calendar text is visible */
+      #calendar {
+        color: #333;
+      }
+    </style>
+  </head>
+
+  <body>
+    <!-- Divine Entrance Loader (Same as Index) -->
+    <div id="divine-loader">
+      <div class="celestial-bg">
+        <div class="mist m1"></div>
+        <div class="mist m2"></div>
+        <div class="mist m3"></div>
+      </div>
+      <div class="loader-inner">
+        <div class="ripple-container">
+          <h1 class="welcome-text">WINNING CITY <br /><span>EVENTS</span></h1>
+        </div>
+        <div class="loader-status">
+          <div class="status-line"></div>
+          <p id="status-phrase">Loading Calendar...</p>
+        </div>
+      </div>
+      <div class="super-light"></div>
+    </div>
+
+    <!-- SVG Filter for Loader -->
+    <svg style="display: none">
+      <filter id="air-ripple">
+        <feTurbulence
+          id="turbulence"
+          type="fractalNoise"
+          baseFrequency="0.02"
+          numOctaves="3"
+          seed="2"
+        >
+          <animate
+            attributeName="baseFrequency"
+            dur="10s"
+            values="0.02;0.05;0.02"
+            repeatCount="indefinite"
+          />
+        </feTurbulence>
+        <feDisplacementMap in="SourceGraphic" scale="15" />
+      </filter>
+    </svg>
+
+    <!-- Loader Script -->
+    <script>
+      (function () {
+        const loader = document.getElementById("divine-loader");
+        const phrase = document.getElementById("status-phrase");
+        window.addEventListener("load", () => {
+          setTimeout(() => {
+            phrase.innerText = "Accessing Schedule...";
+            loader.classList.add("fast-exit");
+            setTimeout(() => {
+              loader.classList.add("fade-up");
+              setTimeout(() => {
+                loader.style.display = "none";
+              }, 1500);
+            }, 800);
+          }, 1000);
+        });
+      })();
+    </script>
+
+    <!-- Holy & Lively Background -->
+    <div class="page-bg">
+      <div class="light-orb"></div>
+      <div
+        class="divine-bg"
+        style="
+          position: absolute;
+          top: 0;
+          left: 0;
+          width: 100%;
+          height: 100%;
+          z-index: -1;
+          opacity: 0.5;
+        "
+      >
+        <div class="particle"></div>
+        <div class="particle"></div>
+        <div class="particle"></div>
+        <div class="particle"></div>
+      </div>
+    </div>
+
+    <!-- Real Navbar -->
+    <nav class="navbar" id="main-nav">
+      <div class="nav-container">
+        <div class="logo">
+          <img src="image/logo.png" alt="Winning City WLBC Logo" />
+          <span>WLBC</span>
+        </div>
+
+        <ul class="nav-links">
+          <li><a href="index.html" class="nav-item">Home</a></li>
+          <li><a href="about.html" class="nav-item">About</a></li>
+          <li><a href="index.html#media" class="nav-item">Media</a></li>
+          <li class="nav-item dropdown">
+            <a href="#" class="dropbtn"
+              >Useful Links
+              <i data-lucide="chevron-down" class="chevron-icon"></i
+            ></a>
+            <div class="dropdown-menu">
+              <a href="solomon.html">Rev S.G Erochukwu</a>
+              <a href="event.html">Event Calender</a>
+              <a href="#">Prayer Request</a>
+              <a href="#">Contact Us</a>
+              <a href="#">Priavcy Policy</a>
+            </div>
+          </li>
+          <li class="nav-item-mobile-only">
+            <button id="theme-toggle-mobile" class="theme-toggle-btn">
+              <span>Theme</span>
+              <i data-lucide="sun" class="sun-icon"></i>
+              <i data-lucide="moon" class="moon-icon"></i>
+            </button>
+          </li>
+        </ul>
+
+        <div class="nav-actions">
+          <button id="theme-toggle-desktop" class="theme-toggle-btn">
+            <i data-lucide="sun" class="sun-icon"></i>
+            <i data-lucide="moon" class="moon-icon"></i>
+          </button>
+          <div class="burger"><span></span><span></span><span></span></div>
+        </div>
+      </div>
+    </nav>
+
+    <!-- Main Content -->
+    <div class="site-main-content">
+      <!-- Calendar Container -->
+      <div id="calendar-container">
+        <div id="calendar"></div>
+      </div>
+
+      <!-- Modal / Popup for event details -->
+      <div id="eventModal" class="modal">
+        <div class="modal-content">
+          <span class="close-btn" onclick="closeModal()">&times;</span>
+          <h2 class="event-title" id="modalTitle"></h2>
+          <p class="event-time" id="modalTime"></p>
+          <div class="event-description" id="modalDesc"></div>
+        </div>
+      </div>
+
+      <!-- Footer Sensor -->
+      <div id="footer-sensor"></div>
+    </div>
+
+    <!-- Real Footer -->
+    <footer class="divine-dynamic-footer" id="holyFooter">
+      <div class="footer-grow-wrapper">
+        <div class="footer-inner-content">
+          <!-- Founder Section -->
+          <div class="footer-founder-aside">
+            <div class="founder-card">
+              <div class="founder-img-box">
+                <img src="image/1749187985514.jpg" alt="Rev. S.G Erochukwu" />
+              </div>
+              <div class="founder-badge">
+                <span class="founder-title">FOUNDER</span>
+                <span class="founder-name">Rev. S.G Erochukwu</span>
+              </div>
+            </div>
+          </div>
+
+          <div class="footer-right-panel">
+            <div class="footer-top-row">
+              <div class="footer-logo-box">
+                <div class="logo-space">
+                  <img
+                    src="image/logo.png"
+                    alt="Winning City Church Logo"
+                    class="f-logo"
+                  />
+                </div>
+                <p>WINNING CITY: GOD IS OUR RIGHTEOUSNESS.</p>
+              </div>
+              <!-- Daily Word Carousel -->
+              <div class="footer-word-carousel">
+                <div class="carousel-track" id="footerTrack">
+                  <div class="word-card active">
+                    <span>"The Lord is my Shepherd, I shall not want."</span>
+                  </div>
+                  <div class="word-card">
+                    <span>"Victory is ours through Christ who loves us."</span>
+                  </div>
+                  <div class="word-card">
+                    <span>"Be still, and know that I am God."</span>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <div class="footer-main-grid">
+              <div class="f-col">
+                <h4>Navigation</h4>
+                <a href="index.html">Home</a>
+                <a href="about.html">About</a>
+                <a href="#">Giving</a>
+              </div>
+              <div class="f-col">
+                <h4>Contact Us</h4>
+                <div
+                  style="
+                    display: flex;
+                    align-items: flex-start;
+                    gap: 10px;
+                    margin-bottom: 15px;
+                    color: #ccc;
+                  "
+                >
+                  <i
+                    data-lucide="map-pin"
+                    style="
+                      color: var(--holy-gold);
+                      min-width: 20px;
+                      margin-top: 3px;
+                    "
+                  ></i>
+                  <span>Klm 4 Osusu Amaukwa Aba Abia state</span>
+                </div>
+                <div
+                  style="
+                    display: flex;
+                    align-items: center;
+                    gap: 10px;
+                    margin-bottom: 15px;
+                    color: #ccc;
+                  "
+                >
+                  <i
+                    data-lucide="phone"
+                    style="color: var(--holy-gold); min-width: 20px"
+                  ></i>
+                  <span>+2348029772375</span>
+                </div>
+                <div
+                  style="
+                    display: flex;
+                    align-items: center;
+                    gap: 10px;
+                    margin-bottom: 15px;
+                    color: #ccc;
+                  "
+                >
+                  <i
+                    data-lucide="mail"
+                    style="color: var(--holy-gold); min-width: 20px"
+                  ></i>
+                  <span>fountainsdata234@gmail.com</span>
+                </div>
+              </div>
+              <div class="f-col">
+                <h4>Join Us</h4>
+                <div class="social-links">
+                  <div class="wrapper">
+                    <div class="button">
+                      <div class="icon"><i class="fa fa-facebook"></i></div>
+                    </div>
+                    <div class="button">
+                      <div class="icon"><i class="fa fa-twitter"></i></div>
+                    </div>
+                    <div class="button">
+                      <div class="icon"><i class="fa fa-instagram"></i></div>
+                    </div>
+                    <div class="button">
+                      <div class="icon"><i class="fa fa-youtube"></i></div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <div class="footer-bottom-bar">
+              <p>&copy; 2025 Winning City Global. All rights reserved.</p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </footer>
+
+    <!-- Scripts -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/gsap.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.js"></script>
+    <script src="script.js"></script>
+
+    <!-- Calendar Init Script -->
+    <script>
+      document.addEventListener("DOMContentLoaded", function () {
+        var calendarEl = document.getElementById("calendar");
+        var calendar = new FullCalendar.Calendar(calendarEl, {
+          initialView: "dayGridMonth",
+          headerToolbar: {
+            left: "prev,next today",
+            center: "title",
+            right: "dayGridMonth,timeGridWeek,timeGridDay",
+          },
+          height: "auto",
+          events: [
+            {
+              title: "Sunday Service",
+              start: new Date().toISOString().split("T")[0] + "T08:00:00", // Today
+              description:
+                "Join us for a powerful time of worship and the word.",
+            },
+            {
+              title: "Bible Study",
+              start:
+                new Date(new Date().getTime() + 86400000 * 3)
+                  .toISOString()
+                  .split("T")[0] + "T17:00:00", // 3 days later
+              description: "Mid-week spiritual deepening.",
+            },
+            {
+              title: "Night Vigil",
+              start:
+                new Date(new Date().getTime() + 86400000 * 5)
+                  .toISOString()
+                  .split("T")[0] + "T23:00:00", // 5 days later
+              description: "A night of prayer and prophecy.",
+            },
+          ],
+          eventClick: function (info) {
+            info.jsEvent.preventDefault();
+            document.getElementById("modalTitle").innerText = info.event.title;
+            document.getElementById("modalTime").innerText =
+              info.event.start.toLocaleString();
+            document.getElementById("modalDesc").innerText =
+              info.event.extendedProps.description ||
+              "No description available.";
+            document.getElementById("eventModal").style.display = "block";
+          },
+        });
+        calendar.render();
+      });
+
+      function closeModal() {
+        document.getElementById("eventModal").style.display = "none";
+      }
+      window.onclick = function (event) {
+        if (event.target == document.getElementById("eventModal")) {
+          closeModal();
+        }
+      };
+    </script>
+  </body>
+</html>
