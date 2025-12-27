@@ -3,7 +3,7 @@ const sermonDB = [
   {
     title: "THE APOSTOLIC UNCTION",
     tags: "rev erochukwu fire power unction spirit",
-    url: "video/VID-20251003-WA0015.mp4",
+    url: "https://youtu.be/aiHgi71pBbE?si=6G8HlOL6_nUV8LZc",
   },
   {
     title: "MYSTERY OF GRACE",
@@ -127,3 +127,4 @@ document.getElementById("navSecure").onclick = () => {
   gsap.to(".panel-right", { xPercent: 0, duration: 1.5 });
   gsap.set(".wiring", { strokeDashoffset: 200 });
 };
+
