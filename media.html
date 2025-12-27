@@ -1,0 +1,438 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="light">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>WLBC | MEDIA</title>
+
+    <!-- SEO Meta Tags -->
+    <meta
+      name="description"
+      content="Welcome to Winning City (WLBC) - God Our Righteousness. Join us for life-changing sermons, worship, and community in Aba, Abia State led by Rev. S.G Erochukwu."
+    />
+    <meta
+      name="keywords"
+      content="Winning City, WLBC, Winning Life Bible Church, Media, Church in Aba, Rev S.G Erochukwu, Christian Ministry,Winning cityn Aba, Rev S.G Erochukwu, Christian Ministry, Sermons, Worship, God Our Righteousness, Abia State Church"
+    />
+    <meta name="author" content="WLBC IT Team" />
+    <meta name="robots" content="index, follow" />
+
+    <!-- Open Graph / Facebook -->
+    <meta property="og:type" content="website" />
+    <meta
+      property="og:title"
+      content="WLBC | Winning City - God Our Righteousness"
+    />
+    <meta
+      property="og:description"
+      content="Experience God's grace at Winning City. Join us for powerful worship and the word."
+    />
+    <meta property="og:image" content="image/Retouch_20241018_160117602.png" />
+
+    <!-- Twitter -->
+    <meta property="twitter:card" content="summary_large_image" />
+    <meta
+      property="twitter:title"
+      content="WLBC | Winning City - God Our Righteousness"
+    />
+    <meta
+      property="twitter:description"
+      content="Experience God's grace at Winning City. Join us for powerful worship and the word."
+    />
+    <meta
+      property="twitter:image"
+      content="image/Retouch_20241018_160117602.png"
+    />
+
+    <link
+      rel="icon"
+      type="image/png"
+      href="image/Retouch_20241018_160117602.png"
+    />
+    <!-- Fonts & Icons -->
+    <link
+      href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;600;800&display=swap"
+      rel="stylesheet"
+    />
+    <link
+      rel="stylesheet"
+      href="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.css"
+    />
+    <script src="https://unpkg.com/lucide@latest"></script>
+    <link rel="stylesheet" href="media.css" />
+    <link rel="stylesheet" href="style.css" />
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.css"
+      integrity="sha512-5A8nwdMOWrSz20fDsjczgUidUBR8liPYU+WymTZP1lmY9G6Oc7HlZv156XqnsgNUzTyMefFTcsFH/tnJE/+xBg=="
+      crossorigin="anonymous"
+      referrerpolicy="no-referrer"
+    />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Imperial+Script&display=swap"
+      rel="stylesheet"
+    />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=New+Rocker&display=swap"
+      rel="stylesheet"
+    />
+  </head>
+  <body>
+    <!-- Smart Navbar -->
+    <nav class="navbar" id="main-nav">
+      <div class="nav-container">
+        <div class="logo">
+          <img src="image/logo.png" alt="Winning City WLBC Logo" />
+          <span>WLBC</span>
+        </div>
+
+        <ul class="nav-links">
+          <li><a href="index.html" class="nav-item">Home</a></li>
+          <li><a href="about.html" class="nav-item">About</a></li>
+          <li><a href="media.html" class="nav-item active">Media</a></li>
+          <li class="nav-item dropdown">
+            <a href="#" class="dropbtn"
+              >Useful Links
+              <i data-lucide="chevron-down" class="chevron-icon"></i
+            ></a>
+            <div class="dropdown-menu">
+              <a href="solomon.html">Rev S.G Erochukwu</a>
+              <a href="event.html">Event Calender</a>
+              <a href="#">Prayer Request</a>
+              <a href="#">Contact Us</a>
+              <a href="#">Priavcy Policy</a>
+            </div>
+          </li>
+          <!-- Mobile-only theme toggle -->
+          <li class="nav-item-mobile-only">
+            <button
+              id="theme-toggle-mobile"
+              class="theme-toggle-btn"
+              title="Toggle Theme"
+            >
+              <span>Theme</span>
+              <i data-lucide="sun" class="sun-icon"></i>
+              <i data-lucide="moon" class="moon-icon"></i>
+            </button>
+          </li>
+        </ul>
+
+        <div class="nav-actions">
+          <button
+            id="theme-toggle-desktop"
+            class="theme-toggle-btn"
+            title="Toggle Theme"
+          >
+            <i data-lucide="sun" class="sun-icon"></i>
+            <i data-lucide="moon" class="moon-icon"></i>
+          </button>
+          <div class="burger">
+            <span></span>
+            <span></span>
+            <span></span>
+          </div>
+        </div>
+      </div>
+    </nav>
+    <!-- GSAP & Fuzzy Search Libraries -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/gsap.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/fuse.js@6.6.2"></script>
+
+    <section class="vault-portal-system">
+      <!-- 1. THE MAIN CONTENT WRAPPER (Everything behind the doors) -->
+      <div class="main-content-revealed" id="innerSanctuary">
+        <!-- Section 1: The TV Interface -->
+        <section class="tv-portal-section">
+          <div class="tv-frame">
+            <div id="tvBackdrop" class="tv-backdrop">
+              <img src="image/logo.png" alt="WLBC Logo" />
+            </div>
+            <div id="mainVideoPlayer" class="video-container"></div>
+            <div class="scanlines"></div>
+          </div>
+
+          <div class="search-sector">
+            <div class="search-dock">
+              <div class="search-wrapper">
+                <input
+                  type="text"
+                  id="neuralSearch"
+                  placeholder="SEARCH ARCHIVES..."
+                />
+                <div class="input-glow"></div>
+              </div>
+            </div>
+            <div class="video-drawer" id="videoDrawer">
+              <div class="drawer-cap">
+                <span>MATCHING FREQUENCIES</span>
+                <button id="closeDrawerBtn">CLOSE</button>
+              </div>
+              <div class="drawer-body" id="drawerResults"></div>
+            </div>
+          </div>
+        </section>
+
+        <!-- Section 2: SOCIAL MEDIA (This area expands as you add more) -->
+        <section class="additional-content-area">
+          <div class="social-join-section">
+            <h4>Join Us</h4>
+            <div class="social-links">
+              <div class="wrapper">
+                <div class="button">
+                  <div class="icon"><i class="fa fa-facebook"></i></div>
+                </div>
+                <div class="button">
+                  <div class="icon"><i class="fa fa-twitter"></i></div>
+                </div>
+                <div class="button">
+                  <div class="icon"><i class="fa fa-instagram"></i></div>
+                </div>
+                <div class="button">
+                  <div class="icon"><i class="fa fa-youtube"></i></div>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <!-- ADD NEW SECTIONS HERE - THE PAGE WILL EXPAND AUTOMATICALLY -->
+        </section>
+
+        <!-- Floating UI Controls -->
+        <div id="navSecure" class="ui-btn danger">Close</div>
+      </div>
+
+      <!-- 2. THE BLAST DOORS -->
+      <div class="blast-door-overlay" id="doorSystem">
+        <div class="vent vent-left"></div>
+        <div class="vent vent-right"></div>
+
+        <div class="blast-panel panel-left">
+          <div class="industrial-shading">
+            <div class="recessed-chamber">
+              <div class="circuit-grid">
+                <svg
+                  viewBox="0 0 100 100"
+                  preserveAspectRatio="none"
+                  style="width: 100%; height: 100%"
+                >
+                  <path
+                    class="wiring"
+                    d="M0 15 H50 V45 H100"
+                    fill="none"
+                    stroke="cyan"
+                  />
+                  <path
+                    class="wiring"
+                    d="M20 0 V30 H0"
+                    fill="none"
+                    stroke="cyan"
+                  />
+                  <path
+                    class="wiring"
+                    d="M0 85 H50 V55 H100"
+                    fill="none"
+                    stroke="cyan"
+                  />
+                  <path
+                    class="wiring"
+                    d="M20 100 V70 H0"
+                    fill="none"
+                    stroke="cyan"
+                  />
+                </svg>
+              </div>
+            </div>
+            <div class="hazard-strip"></div>
+            <div class="bolt bolt-1"></div>
+            <div class="bolt bolt-2"></div>
+          </div>
+        </div>
+
+        <div class="blast-panel panel-right">
+          <div class="industrial-shading">
+            <div class="recessed-chamber">
+              <div class="circuit-grid">
+                <svg
+                  viewBox="0 0 100 100"
+                  preserveAspectRatio="none"
+                  style="width: 100%; height: 100%"
+                >
+                  <path
+                    class="wiring"
+                    d="M100 15 H50 V45 H0"
+                    fill="none"
+                    stroke="cyan"
+                  />
+                  <path
+                    class="wiring"
+                    d="M80 0 V30 H100"
+                    fill="none"
+                    stroke="cyan"
+                  />
+                  <path
+                    class="wiring"
+                    d="M100 85 H50 V55 H0"
+                    fill="none"
+                    stroke="cyan"
+                  />
+                  <path
+                    class="wiring"
+                    d="M80 100 V70 H100"
+                    fill="none"
+                    stroke="cyan"
+                  />
+                </svg>
+              </div>
+            </div>
+            <div class="hazard-strip"></div>
+            <div class="bolt bolt-1"></div>
+            <div class="bolt bolt-2"></div>
+          </div>
+        </div>
+
+        <!-- 3. CENTRAL LIQUID ORB -->
+        <div class="portal-core" id="orbTrigger">
+          <div class="orb-glass">
+            <!-- Fluid Layers -->
+            <div class="orb-liquid"></div>
+            <div class="orb-reflection"></div>
+
+            <!-- Label -->
+            <div class="orb-label">WLBC</div>
+          </div>
+
+          <div class="core-hint">
+            <p
+              style="
+                position: absolute;
+                left: 43%;
+                color: var(--sci-blue);
+                animation: bounce 2s infinite;
+              "
+            >
+              ⬆⬆
+            </p>
+          </div>
+        </div>
+      </div>
+    </section>
+    <main>
+      <section class="social-join-section">
+        <h4>Join Us</h4>
+        <div class="social-links">
+          <div class="wrapper">
+            <div class="button">
+              <div class="icon"><i class="fa fa-facebook"></i></div>
+            </div>
+            <div class="button">
+              <div class="icon"><i class="fa fa-twitter"></i></div>
+            </div>
+            <div class="button">
+              <div class="icon"><i class="fa fa-instagram"></i></div>
+            </div>
+            <div class="button">
+              <div class="icon"><i class="fa fa-youtube"></i></div>
+            </div>
+          </div>
+        </div>
+      </section>
+    </main>
+    <script>
+      document.addEventListener("DOMContentLoaded", () => {
+        const heroSwiperEl = document.querySelector(".heroSwiper");
+        const mainNav = document.getElementById("main-nav");
+        const burger = document.querySelector(".burger");
+        const navLinks = document.querySelector(".nav-links");
+        const themeToggleDesktop = document.getElementById(
+          "theme-toggle-desktop"
+        );
+        const themeToggleMobile = document.getElementById(
+          "theme-toggle-mobile"
+        );
+        const dropdown = document.querySelector(".dropdown");
+        const dropBtn = document.querySelector(".dropdown .dropbtn");
+        const cube = document.querySelector(".cube");
+        const backToTopBtn = document.getElementById("back-to-top");
+
+        // --- Initialize Lucide Icons ---
+        lucide.createIcons();
+
+        // --- Smart Navbar on Scroll ---
+        let lastScrollTop = 0;
+        window.addEventListener("scroll", () => {
+          let scrollTop =
+            window.pageYOffset || document.documentElement.scrollTop;
+          // Show/hide navbar on scroll
+          if (scrollTop > lastScrollTop) {
+            // Downscroll - Hide navbar
+            mainNav.style.top = "0";
+          } else {
+            // Upscroll - Show navbar
+            mainNav.style.top = `-${mainNav.offsetHeight}px`;
+          }
+          if (scrollTop <= mainNav.offsetHeight) {
+            mainNav.style.top = "0"; // Always show at top
+          }
+
+          // Show/hide back-to-top button
+          if (scrollTop > 300) backToTopBtn.classList.add("show");
+          else backToTopBtn.classList.remove("show");
+
+          lastScrollTop = scrollTop <= 0 ? 0 : scrollTop; // For Mobile or negative scrolling
+        });
+
+        // --- Hamburger Menu Toggle ---
+        burger.addEventListener("click", () => {
+          // Toggle Nav
+          navLinks.classList.toggle("nav-active");
+
+          // Burger Animation
+          burger.classList.toggle("toggle");
+
+          // Prevent body scroll when menu is open
+          document.body.classList.toggle("no-scroll");
+        });
+
+        // --- Mobile Dropdown Toggle ---
+        dropBtn.addEventListener("click", (e) => {
+          if (window.innerWidth <= 768) {
+            e.preventDefault(); // Prevent link navigation only on mobile
+            dropdown.classList.toggle("open");
+          }
+        });
+
+        // --- Theme Toggler ---
+        const currentTheme = localStorage.getItem("theme");
+
+        if (currentTheme) {
+          document.documentElement.setAttribute("data-theme", currentTheme);
+        }
+
+        function toggleTheme() {
+          let currentTheme =
+            document.documentElement.getAttribute("data-theme");
+          if (currentTheme === "dark") {
+            document.documentElement.setAttribute("data-theme", "light");
+            localStorage.setItem("theme", "light");
+          } else {
+            document.documentElement.setAttribute("data-theme", "dark");
+            localStorage.setItem("theme", "dark");
+          }
+        }
+
+        themeToggleDesktop.addEventListener("click", toggleTheme);
+        themeToggleMobile.addEventListener("click", toggleTheme);
+
+        // --- Back to Top Button Click ---
+        backToTopBtn.addEventListener("click", () => {
+          window.scrollTo({ top: 0, behavior: "smooth" });
+        });
+      });
+    </script>
+    <script src="media.js"></script>
+  </body>
+</html>
