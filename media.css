@@ -28,11 +28,90 @@
   background: radial-gradient(circle at center, #0a1114 0%, #000 100%);
 }
 
+/* Ensure the TV frame takes up all available height above the search dock */
 .tv-frame {
   flex-grow: 1;
+  height: calc(
+    100vh - 100px
+  ); /* Adjust 100px to match your search-sector height */
   position: relative;
   background: #000;
-  overflow: hidden;
+}
+
+#mainVideoPlayer {
+  width: 100%;
+  height: 100%;
+}
+
+/* 1. Transparent Button - Pinned to Right Wall Center */
+.cinema-btn {
+  position: absolute;
+  top: 50%;
+  right: 15px;
+  transform: translateY(-50%);
+  background: transparent;
+  border: 1px solid #ffffff;
+  color: #ffffff;
+  padding: 10px 14px;
+  font-size: 10px;
+  font-weight: bold;
+  cursor: pointer;
+  z-index: 9999;
+  backdrop-filter: blur(3px);
+  display: none; /* Hidden until video selection */
+  text-transform: uppercase;
+  letter-spacing: 1px;
+  transition: background 0.3s;
+}
+
+.cinema-btn:hover {
+  background: rgba(255, 255, 255, 0.1);
+}
+
+/* 2. THE TILT LOGIC (Forced Rotation) */
+/* When this class is added, the TV physically flips 90 degrees */
+.tv-frame.cinema-tilt {
+  position: fixed !important;
+  top: 50% !important;
+  left: 50% !important;
+  /* We swap dimensions: Width becomes the phone's Height */
+  width: 100dvh !important;
+  height: 100dvw !important;
+  /* Center it and tilt it */
+  transform: translate(-50%, -50%) rotate(90deg) !important;
+  z-index: 100005 !important; /* Above your Navbar */
+  background: #000;
+  transition: all 0.5s cubic-bezier(0.19, 1, 0.22, 1);
+}
+
+/* Ensure video fills the tilted frame */
+.cinema-tilt #mainVideoPlayer,
+.cinema-tilt #mainVideoPlayer iframe,
+.cinema-tilt #mainVideoPlayer video {
+  width: 100% !important;
+  height: 100% !important;
+  object-fit: contain !important;
+}
+
+/* Move button while tilted so it's still reachable */
+.cinema-tilt .cinema-btn {
+  top: 15px;
+  right: 15px;
+  transform: none;
+  background: rgba(0, 0, 0, 0.5);
+}
+
+/* Hide on Desktop - Only needed for Portrait devices */
+@media (min-width: 1024px) {
+  .cinema-btn {
+    display: none !important;
+  }
+}
+/* Ensure local video fills the screen */
+#mainVideoPlayer video {
+  width: 100%;
+  height: 100%;
+  object-fit: cover; /* This makes it "Full Height" as you requested */
 }
 
 .tv-backdrop {
@@ -165,7 +244,7 @@
     width: 40px;
     height: 40px;
     font-size: 8px;
-    top: 50px;
+    top: 90px;
     right: 20px;
   }
 }
@@ -373,31 +452,30 @@
   stroke-dasharray: 200;
   stroke-dashoffset: 200;
   stroke-width: 1.5; /* Default thicker */
-  transition: 1s;
+  transition: 0.3s;
   filter: drop-shadow(0 0 3px var(--sci-blue)); /* Constant subtle glow */
 }
 
-@media (max-width: 600px) {
-  /* Make wires much thicker on small screens */
-  .wiring {
-    stroke-width: 4px !important;
-    filter: drop-shadow(0 0 8px var(--sci-blue));
-  }
-
-  /* Reduce the 'chamber' padding so wires have more room to show */
+@media (max-width: 600px) and (orientation: portrait) {
+  /* 1. Shrink the chamber so wires don't touch the very bottom/top of the phone */
   .recessed-chamber {
-    inset: 15px !important;
+    top: 15% !important;
+    bottom: 15% !important;
+    left: 10px !important;
+    right: 10px !important;
+    height: 70% !important; /* Forces the wiring area to stay in the center 70% of the screen */
   }
 
-  /* Adjust the industrial frame so it doesn't eat the screen */
+  /* 2. Make the lines beefy so the glow is obvious on Android high-res screens */
+  .wiring {
+    stroke-width: 6px !important;
+    filter: drop-shadow(0 0 12px var(--sci-blue));
+  }
+
+  /* 3. Adjust the industrial shading so it doesn't squash the wiring area */
   .industrial-shading {
     inset: 5px !important;
   }
-}
-.wiring {
-  stroke-width: 1.5;
-  filter: drop-shadow(0 0 4px var(--sci-blue));
-  transition: stroke 0.3s;
 }
 
 .vent {
