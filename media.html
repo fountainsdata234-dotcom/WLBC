@@ -322,6 +322,32 @@
       </div>
     </section>
     <main>
+      <!--clock-->
+
+      <div class="alien-clock-root" id="clockTrigger">
+        <!-- The Floating Craft (Clock) -->
+        <div class="clock-craft">
+          <div class="clock-glass">
+            <div id="digital-time">00:00:00</div>
+            <span class="click-hint-text">CLICK</span>
+            <div class="glow-ring"></div>
+          </div>
+        </div>
+
+        <!-- The Ground Shadow -->
+        <div class="craft-shadow"></div>
+
+        <!-- The Hidden Live Announcement Container -->
+        <div id="liveAnnouncement" class="announcement-card">
+          <div class="announcement-inner">
+            <span class="close-announcement">×</span>
+            <div class="pulse-red"></div>
+            <h3>PROPHETIC UPDATE</h3>
+            <p id="announcement-text">We Would Be Going Live By 3:00 PM</p>
+            <button onclick="launchLiveService()">GO TO LIVE FEED</button>
+          </div>
+        </div>
+      </div>
       <section class="social-join-section">
         <h4>Join Us</h4>
         <div class="social-links">
@@ -337,6 +363,241 @@
             </div>
             <div class="button">
               <div class="icon"><i class="fa fa-youtube"></i></div>
+            </div>
+          </div>
+        </div>
+      </section>
+      <!-- Apostolic Audio Vault Section -->
+      <section class="audio-vault-section">
+        <div class="vault-container">
+          <h2 class="vault-title">
+            Listen to Rev. S.G Erochukwu audio messages here
+          </h2>
+
+          <div class="audio-grid">
+            <!-- Audio Card 1 -->
+            <div
+              class="audio-card"
+              data-audio-src="03 Nathaniel Bassey - There Is a Place (NetNaija.com).mp3"
+            >
+              <div class="disc-container">
+                <div class="vinyl-disc">
+                  <div class="vinyl-grooves"></div>
+                  <div
+                    class="vinyl-label"
+                    style="
+                      background-image: url('https://images.unsplash.com/photo-1507679799987-c73779587ccf?auto=format&fit=crop&w=300&q=80');
+                    "
+                  ></div>
+                </div>
+              </div>
+              <div class="audio-info">
+                <h3>The Mandate of Power</h3>
+                <p>Part 1: Apostolic Foundations</p>
+                <div class="audio-controls">
+                  <button class="play-trigger">PLAY MESSAGE</button>
+                  <input
+                    type="range"
+                    class="audio-scrubber"
+                    value="0"
+                    min="0"
+                    step="0.1"
+                  />
+                </div>
+              </div>
+            </div>
+
+            <!-- Audio Card 2 -->
+            <div
+              class="audio-card"
+              data-audio-src="https://www.soundhelix.com/examples/mp3/SoundHelix-Song-1.mp3"
+            >
+              <div class="disc-container">
+                <div class="vinyl-disc">
+                  <div class="vinyl-grooves"></div>
+                  <div
+                    class="vinyl-label"
+                    style="
+                      background-image: url('https://images.unsplash.com/photo-1516738901171-8eb4fc13bd20?auto=format&fit=crop&w=300&q=80');
+                    "
+                  ></div>
+                </div>
+              </div>
+              <div class="audio-info">
+                <h3>Unlocking Grace</h3>
+                <p>Mid-Week Revelation Series</p>
+                <div class="audio-controls">
+                  <button class="play-trigger">PLAY MESSAGE</button>
+                  <input
+                    type="range"
+                    class="audio-scrubber"
+                    value="0"
+                    min="0"
+                    step="0.1"
+                  />
+                </div>
+              </div>
+            </div>
+
+            <!-- Audio Card 3 -->
+            <div
+              class="audio-card"
+              data-audio-src="05 Nathaniel Bassey - Holy (NetNaija.com).mp3"
+            >
+              <div class="disc-container">
+                <div class="vinyl-disc">
+                  <div class="vinyl-grooves"></div>
+                  <div
+                    class="vinyl-label"
+                    style="
+                      background-image: url('https://images.unsplash.com/photo-1529070532779-19ed3c5e55d3?auto=format&fit=crop&w=300&q=80');
+                    "
+                  ></div>
+                </div>
+              </div>
+              <div class="audio-info">
+                <h3>The Covenant Wealth</h3>
+                <p>Financial Breakthrough Service</p>
+                <div class="audio-controls">
+                  <button class="play-trigger">PLAY MESSAGE</button>
+                  <input
+                    type="range"
+                    class="audio-scrubber"
+                    value="0"
+                    min="0"
+                    step="0.1"
+                  />
+                </div>
+              </div>
+            </div>
+
+            <!-- Audio Card 4 -->
+            <div class="audio-card" data-audio-src="audio/sermon4.mp3">
+              <div class="disc-container">
+                <div class="vinyl-disc">
+                  <div class="vinyl-grooves"></div>
+                  <div
+                    class="vinyl-label"
+                    style="
+                      background-image: url('https://images.unsplash.com/photo-1445077100181-a33e9ac94db0?auto=format&fit=crop&w=300&q=80');
+                    "
+                  ></div>
+                </div>
+              </div>
+              <div class="audio-info">
+                <h3>Dominion in the City</h3>
+                <p>Sunday Glorious Encounter</p>
+                <div class="audio-controls">
+                  <button class="play-trigger">PLAY MESSAGE</button>
+                  <input
+                    type="range"
+                    class="audio-scrubber"
+                    value="0"
+                    min="0"
+                    step="0.1"
+                  />
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- book section-->
+      <!-- Celestial Library Section -->
+      <section class="celestial-library">
+        <!-- Holy Particles Background -->
+        <div class="particles-container">
+          <div class="particle p1"></div>
+          <div class="particle p2"></div>
+          <div class="particle p3"></div>
+          <div class="particle p4"></div>
+          <div class="particle p5"></div>
+        </div>
+
+        <div class="library-container">
+          <h2 class="library-title">Spiritual Wisdom & Publications</h2>
+
+          <div class="book-grid">
+            <!-- Book 1 -->
+            <div class="book-item" onclick="openBook(0)">
+              <div class="book-craft">
+                <img
+                  src="https://images.unsplash.com/photo-1544947950-fa07a98d237f?auto=format&fit=crop&w=400&q=80"
+                  alt="Book 1"
+                />
+                <div class="book-spine"></div>
+              </div>
+              <div class="book-shadow"></div>
+              <p class="book-label">The Power of Faith</p>
+            </div>
+
+            <!-- Book 2 -->
+            <div
+              class="book-item"
+              onclick="openBook(1)"
+              style="animation-delay: -1s"
+            >
+              <div class="book-craft" style="animation-delay: -1s">
+                <img
+                  src="https://images.unsplash.com/photo-1589829085413-56de8ae18c73?auto=format&fit=crop&w=400&q=80"
+                  alt="Book 2"
+                />
+                <div class="book-spine"></div>
+              </div>
+              <div class="book-shadow" style="animation-delay: -1s"></div>
+              <p class="book-label">Walking in Grace</p>
+            </div>
+
+            <!-- Book 3 -->
+            <div
+              class="book-item"
+              onclick="openBook(2)"
+              style="animation-delay: -2s"
+            >
+              <div class="book-craft" style="animation-delay: -2s">
+                <img
+                  src="https://images.unsplash.com/photo-1512820790803-83ca734da794?auto=format&fit=crop&w=400&q=80"
+                  alt="Book 3"
+                />
+                <div class="book-spine"></div>
+              </div>
+              <div class="book-shadow" style="animation-delay: -2s"></div>
+              <p class="book-label">Kingdom Dominion</p>
+            </div>
+
+            <!-- Book 4 -->
+            <div
+              class="book-item"
+              onclick="openBook(3)"
+              style="animation-delay: -3s"
+            >
+              <div class="book-craft" style="animation-delay: -3s">
+                <img
+                  src="https://images.unsplash.com/photo-1476275466078-4007374efbbe?auto=format&fit=crop&w=400&q=80"
+                  alt="Book 4"
+                />
+                <div class="book-spine"></div>
+              </div>
+              <div class="book-shadow" style="animation-delay: -3s"></div>
+              <p class="book-label">The Secret Altar</p>
+            </div>
+          </div>
+        </div>
+
+        <!-- Reading Room Modal -->
+        <div id="bookModal" class="book-modal">
+          <div class="modal-content">
+            <span class="close-modal" onclick="closeBook()">&times;</span>
+            <div class="modal-body">
+              <div class="modal-img-wrap">
+                <img id="modalImg" src="" alt="Book Cover" />
+              </div>
+              <div class="modal-text">
+                <h3 id="modalTitle">Book Title</h3>
+                <p id="modalSummary">Book Summary goes here...</p>
+                <a href="#" class="read-btn">START READING</a>
+              </div>
             </div>
           </div>
         </div>
