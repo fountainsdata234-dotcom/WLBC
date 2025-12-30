@@ -3,22 +3,22 @@ const sermonDB = [
   {
     title: "THE APOSTOLIC UNCTION",
     tags: "rev erochukwu fire power unction spirit",
-    url: "https://youtu.be/aiHgi71pBbE?feature=shared",
+    url: "https://www.youtube.com/embed/aiHgi71pBbE", // YouTube Link
   },
   {
     title: "MYSTERY OF GRACE",
     tags: "favor mercy kindness christ grace",
-    url: "video/video2.mp4",
+    url: "video/VID-20251003-WA0016.mp4", // Local Video
   },
   {
     title: "KINGDOM DOMINION",
     tags: "victory strength king war expansion",
-    url: "video/video3.mp4",
+    url: "video/VID-20251003-WA0017.mp4", // Local Video
   },
   {
     title: "THE COVENANT WEALTH",
     tags: "money blessing finances wealth covenant",
-    url: "video/video4.mp4",
+    url: "https://www.youtube.com/embed/another_id", // YouTube Link
   },
 ];
 
@@ -53,13 +53,68 @@ function updateList(val) {
     .join("");
 }
 
+// --- 1. THE FORCED TILT TOGGLE ---
+document.getElementById("cinemaMode").addEventListener("click", function () {
+  const tvFrame = document.querySelector(".tv-frame");
+  const isTilted = tvFrame.classList.contains("cinema-tilt");
+
+  if (!isTilted) {
+    // TRIGGER TILT
+    tvFrame.classList.add("cinema-tilt");
+    this.innerText = "EXIT LANDSCAPE";
+    // Lock background scroll
+    document.body.style.overflow = "hidden";
+  } else {
+    // REMOVE TILT
+    tvFrame.classList.remove("cinema-tilt");
+    this.innerText = "GO LANDSCAPE";
+    document.body.style.overflow = "";
+  }
+});
+
+// --- 2. UPDATED LAUNCHMEDIA FUNCTION ---
 function launchMedia(url) {
+  const videoPlayer = document.getElementById("mainVideoPlayer");
+  const backdrop = document.getElementById("tvBackdrop");
+  const cinemaBtn = document.getElementById("cinemaMode");
+
+  // Show the button
+  cinemaBtn.style.display = "block";
+  cinemaBtn.innerText = "GO LANDSCAPE";
+
   backdrop.style.opacity = "0";
-  videoPlayer.innerHTML = `<video width="100%" height="100%" src="${url}" controls autoplay style="object-fit:cover;"></video>`;
-  drawer.style.height = "0";
+
+  // Check URL Type (YouTube vs Local)
+  if (url.includes("youtube.com") || url.includes("youtu.be")) {
+    videoPlayer.innerHTML = `
+      <iframe width="100%" height="100%" 
+        src="${url}?autoplay=1&rel=0&modestbranding=1" 
+        frameborder="0" allow="autoplay; encrypted-media" allowfullscreen>
+      </iframe>`;
+  } else {
+    videoPlayer.innerHTML = `
+      <video width="100%" height="100%" controls autoplay style="object-fit: cover;">
+        <source src="${url}" type="video/mp4">
+      </video>`;
+  }
+
+  // Close the drawer
+  document.getElementById("videoDrawer").style.height = "0";
 }
 
-// --- DOOR LOGIC ---
+// --- 3. THE RESET (LOCK BUTTON) ---
+// Inside your existing navSecure button logic, add these resets:
+document.getElementById("navSecure").addEventListener("click", () => {
+  // 1. Hide Button
+  document.getElementById("cinemaMode").style.display = "none";
+  // 2. Kill Video
+  document.getElementById("mainVideoPlayer").innerHTML = "";
+  // 3. Remove Tilt if it was active
+  document.querySelector(".tv-frame").classList.remove("cinema-tilt");
+  document.body.style.overflow = "";
+
+  // ... your other door closing code ...
+}); // --- DOOR LOGIC ---
 const orb = document.getElementById("orbTrigger");
 const audioCtx = new (window.AudioContext || window.webkitAudioContext)();
 
@@ -127,5 +182,3 @@ document.getElementById("navSecure").onclick = () => {
   gsap.to(".panel-right", { xPercent: 0, duration: 1.5 });
   gsap.set(".wiring", { strokeDashoffset: 200 });
 };
-
-
