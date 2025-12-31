@@ -182,3 +182,225 @@ document.getElementById("navSecure").onclick = () => {
   gsap.to(".panel-right", { xPercent: 0, duration: 1.5 });
   gsap.set(".wiring", { strokeDashoffset: 200 });
 };
+// clock
+// --- 1. CLOCK LOGIC ---
+function updateClock() {
+  const now = new Date();
+  const h = String(now.getHours()).padStart(2, "0");
+  const m = String(now.getMinutes()).padStart(2, "0");
+  const s = String(now.getSeconds()).padStart(2, "0");
+  document.getElementById("digital-time").innerText = `${h}:${m}:${s}`;
+}
+setInterval(updateClock, 1000);
+
+// --- 2. SPEECH & INTERACTION LOGIC ---
+const clockTrigger = document.getElementById("clockTrigger");
+const announcement = document.getElementById("liveAnnouncement");
+const messageText = document.getElementById("announcement-text").innerText;
+
+clockTrigger.addEventListener("click", () => {
+  // Show the container
+  announcement.classList.add("show");
+
+  // SYSTEM INBUILT SPEECH (The Clock reads the message)
+  if ("speechSynthesis" in window) {
+    // Cancel any currently speaking text
+    window.speechSynthesis.cancel();
+
+    const speech = new SpeechSynthesisUtterance(messageText);
+    speech.pitch = 0.8; // Low mechanical voice
+    speech.rate = 1.0;
+    speech.volume = 1.0;
+    window.speechSynthesis.speak(speech);
+  }
+});
+
+// Close functionality
+document.querySelector(".close-announcement").onclick = (e) => {
+  e.stopPropagation();
+  announcement.classList.remove("show");
+  window.speechSynthesis.cancel();
+};
+
+// --- 3. LINKING THE LIVE SERVICE ---
+// How to link your service to the existing video frame:
+function launchLiveService() {
+  const videoContainer = document.getElementById("mainVideoPlayer"); // This is your video frame ID
+  const backdrop = document.getElementById("tvBackdrop");
+
+  // THE YOUTUBE LIVE LINK (or your specific live URL)
+  const liveUrl =
+    "https://www.youtube.com/embed/live_stream?channel=YOUR_CHANNEL_ID";
+
+  // 1. Hide the church logo backdrop
+  if (backdrop) backdrop.style.opacity = "0";
+
+  // 2. Inject the Live Feed into your TV
+  videoContainer.innerHTML = `
+        <iframe width="100%" height="100%" 
+            src="${liveUrl}&autoplay=1" 
+            frameborder="0" allow="autoplay; encrypted-media" 
+            allowfullscreen>
+        </iframe>`;
+
+  // 3. Close the announcement
+  announcement.classList.remove("show");
+
+  // 4. Scroll the user to the TV section automatically
+  document
+    .getElementById("innerSanctuary")
+    .scrollIntoView({ behavior: "smooth" });
+}
+
+//audio disc
+const audioCards = document.querySelectorAll(".audio-card");
+let activeAudio = null;
+let activeCard = null;
+
+audioCards.forEach((card) => {
+  const playBtn = card.querySelector(".play-trigger");
+  const audioSrc = card.getAttribute("data-audio-src");
+  const scrubber = card.querySelector(".audio-scrubber");
+
+  const audio = new Audio(audioSrc);
+
+  // 1. Set the max value of scrubber when metadata (duration) loads
+  audio.addEventListener("loadedmetadata", () => {
+    scrubber.max = audio.duration;
+  });
+
+  // 2. Update scrubber position and color fill as audio plays
+  audio.addEventListener("timeupdate", () => {
+    if (!audio.paused) {
+      scrubber.value = audio.currentTime;
+      const prog = (audio.currentTime / audio.duration) * 100;
+      scrubber.style.setProperty("--p", prog + "%");
+    }
+  });
+
+  // 3. Manual Scrubbing: Allow user to drag the bar to seek
+  scrubber.addEventListener("input", () => {
+    audio.currentTime = scrubber.value;
+    const prog = (scrubber.value / audio.duration) * 100;
+    scrubber.style.setProperty("--p", prog + "%");
+  });
+
+  // 4. Play/Pause Logic
+  playBtn.addEventListener("click", () => {
+    // If another audio is already playing, stop it and reset its UI
+    if (activeAudio && activeAudio !== audio) {
+      activeAudio.pause();
+      activeAudio.currentTime = 0;
+      activeCard.classList.remove("playing");
+      activeCard.querySelector(".play-trigger").innerText = "PLAY MESSAGE";
+
+      // Reset the old scrubber visually
+      const oldScrubber = activeCard.querySelector(".audio-scrubber");
+      oldScrubber.value = 0;
+      oldScrubber.style.setProperty("--p", "0%");
+    }
+
+    if (audio.paused) {
+      audio.play();
+      card.classList.add("playing");
+      playBtn.innerText = "PAUSE";
+      activeAudio = audio;
+      activeCard = card;
+    } else {
+      audio.pause();
+      card.classList.remove("playing");
+      playBtn.innerText = "PLAY MESSAGE";
+    }
+  });
+
+  // 5. Auto-reset when the sermon ends
+  audio.addEventListener("ended", () => {
+    card.classList.remove("playing");
+    playBtn.innerText = "PLAY MESSAGE";
+    scrubber.value = 0;
+    scrubber.style.setProperty("--p", "0%");
+  });
+});
+
+// BOOK
+const bookData = [
+  {
+    title: "The Power of Faith",
+    summary:
+      "Explore the depths of unwavering faith. In this book, Rev. S.G. Erochukwu breaks down how faith acts as a currency in the spiritual realm to possess the physical.",
+    img: "https://images.unsplash.com/photo-1544947950-fa07a98d237f?auto=format&fit=crop&w=400&q=80",
+  },
+  {
+    title: "Walking in Grace",
+    summary:
+      "Grace is not just unmerited favor; it is a spiritual enablement. Discover how to walk in the overflow of God's grace every day of your life.",
+    img: "https://images.unsplash.com/photo-1589829085413-56de8ae18c73?auto=format&fit=crop&w=400&q=80",
+  },
+  {
+    title: "Kingdom Dominion",
+    summary:
+      "You were created to rule. This manuscript details the protocols of exercising your authority as a believer in every sphere of influence.",
+    img: "https://images.unsplash.com/photo-1512820790803-83ca734da794?auto=format&fit=crop&w=400&q=80",
+  },
+  {
+    title: "The Secret Altar",
+    summary:
+      "The strength of your public life is determined by your private altar. Learn the ancient patterns of effective prayer and communion with the Father.",
+    img: "https://images.unsplash.com/photo-1476275466078-4007374efbbe?auto=format&fit=crop&w=400&q=80",
+  },
+];
+
+function openBook(index) {
+  const book = bookData[index];
+  document.getElementById("modalTitle").innerText = book.title;
+  document.getElementById("modalSummary").innerText = book.summary;
+  document.getElementById("modalImg").src = book.img;
+  document.getElementById("bookModal").style.display = "flex";
+}
+
+function closeBook() {
+  document.getElementById("bookModal").style.display = "none";
+}
+
+// Close on outside click
+window.onclick = function (event) {
+  let modal = document.getElementById("bookModal");
+  if (event.target == modal) {
+    closeBook();
+  }
+};
+// 1. REVEAL LOGIC (Intersection Observer)
+const footer = document.getElementById("holyFooter");
+const sensor = document.getElementById("footer-sensor");
+
+if (footer && sensor) {
+  const footerObserver = new IntersectionObserver(
+    (entries) => {
+      entries.forEach((entry) => {
+        if (entry.isIntersecting) {
+          // When sensor is seen at the bottom, reveal the footer
+          footer.classList.add("reveal");
+        } else {
+          // If you want it to hide again when scrolling up, keep this.
+          // If you want it to stay revealed once found, comment this out:
+          // footer.classList.remove('reveal');
+        }
+      });
+    },
+    { threshold: 0.1 }
+  );
+
+  footerObserver.observe(sensor);
+}
+
+// 2. CAROUSEL LOGIC
+const wordCards = document.querySelectorAll(".word-card");
+let currentWord = 0;
+
+function rotateWords() {
+  wordCards[currentWord].classList.remove("active");
+  currentWord = (currentWord + 1) % wordCards.length;
+  wordCards[currentWord].classList.add("active");
+}
+
+setInterval(rotateWords, 4000);
