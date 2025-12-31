@@ -497,7 +497,7 @@ main {
   box-sizing: border-box;
   position: relative;
   overflow: hidden;
-  top: 0rem;
+  top: -3rem;
   width: 100%;
   height: 100%;
 }
@@ -513,6 +513,7 @@ main {
   z-index: 10;
   overflow-y: auto; /* ENABLE SCROLLING HERE */
   overflow-x: hidden;
+  height: 100vh; /* Fix height to viewport to enable internal scroll */
 }
 
 /* Adjust your existing TV section to not take up the whole screen if you want more sections below */
@@ -521,12 +522,13 @@ main {
   height: 100vh; /* Keeps the TV fullscreen as the first view */
   display: flex;
   flex-direction: column;
+  flex-shrink: 0; /* Prevent shrinking */
 }
 
 /* YOUR SOCIAL SECTION STYLING */
 .social-join-section {
   padding: 80px 20px;
-  background: #0a0a0a;
+  background-color: var(--background-color);
   text-align: center;
   border-top: 1px solid #222;
 }
@@ -565,3 +567,895 @@ main {
   width: 140px;
   border-radius: 30px;
 } /* Pro tip: increased width to show name */
+/* clock*/
+:root {
+  --clock-neon: #00f2ff;
+}
+
+.alien-clock-root {
+  position: relative;
+  width: 250px;
+  height: 200px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+
+  margin: 50px auto;
+  z-index: 1000;
+}
+
+/* THE CLOCK CRAFT */
+.clock-craft {
+  width: 200px;
+  height: 80px;
+  background: rgba(10, 10, 10, 0.8);
+  border: 2px solid var(--clock-neon);
+  border-radius: 50px;
+  backdrop-filter: blur(10px);
+  display: flex;
+  cursor: pointer;
+  align-items: center;
+  justify-content: center;
+  box-shadow: 0 0 20px rgba(0, 242, 255, 0.4),
+    inset 0 0 10px rgba(0, 242, 255, 0.2);
+  animation: floatCraft 4s ease-in-out infinite;
+  z-index: 2;
+}
+
+#digital-time {
+  font-family: "Share Tech Mono", monospace;
+  color: #fff;
+  font-size: 2rem;
+  text-shadow: 0 0 10px var(--clock-neon);
+}
+
+/* THE GROUND SHADOW */
+.craft-shadow {
+  position: absolute;
+  bottom: 20px;
+  width: 120px;
+  height: 20px;
+  background: rgba(0, 0, 0, 0.6);
+  border-radius: 50%;
+  filter: blur(10px);
+  animation: shadowSync 4s ease-in-out infinite;
+  z-index: 1;
+}
+
+/* FLOATING ANIMATION MATH */
+@keyframes floatCraft {
+  0%,
+  100% {
+    transform: translateY(0);
+  }
+  50% {
+    transform: translateY(-40px);
+  } /* Moves UP */
+}
+
+@keyframes shadowSync {
+  0%,
+  100% {
+    transform: scale(1);
+    opacity: 0.6;
+  }
+  50% {
+    transform: scale(0.6); /* Gets SMALLER as craft goes up */
+    opacity: 0.2; /* Gets LIGHTER as craft goes up */
+  }
+}
+
+/* ANNOUNCEMENT MODAL */
+.announcement-card {
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%) scale(0.8);
+  width: 320px;
+  background: #111;
+  border: 1px solid var(--clock-neon);
+  padding: 30px;
+  border-radius: 20px;
+  color: white;
+  text-align: center;
+  opacity: 0;
+  pointer-events: none;
+  transition: all 0.5s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+  z-index: 10001;
+}
+
+.announcement-card.show {
+  opacity: 1;
+  pointer-events: auto;
+  transform: translate(-50%, -50%) scale(1);
+}
+
+.pulse-red {
+  width: 12px;
+  height: 12px;
+  background: red;
+  border-radius: 50%;
+  margin: 0 auto 10px;
+  animation: blinker 1s infinite;
+}
+@keyframes blinker {
+  50% {
+    opacity: 0;
+  }
+}
+
+.announcement-card button {
+  margin-top: 20px;
+  background: var(--clock-neon);
+  border: none;
+  padding: 10px 20px;
+  font-weight: bold;
+  cursor: not-allowed;
+  border-radius: 5px;
+  filter: grayscale(1);
+}
+.close-announcement:hover {
+  cursor: pointer;
+  color: red;
+}
+/* Fancy Click Text inside Clock */
+.click-hint-text {
+  position: absolute;
+  bottom: 8px;
+  font-size: 8px;
+  letter-spacing: 3px;
+  color: var(--clock-neon);
+  text-transform: uppercase;
+  font-weight: bold;
+  opacity: 0.5;
+  animation: glowPulse 2s infinite ease-in-out;
+}
+
+@keyframes glowPulse {
+  0%,
+  100% {
+    opacity: 0.2;
+    transform: scale(0.9);
+  }
+  50% {
+    opacity: 1;
+    transform: scale(1);
+    text-shadow: 0 0 8px var(--clock-neon);
+  }
+}
+/* adio disc*/
+:root {
+  --gold: #d4af37;
+  --teal: #1a433e;
+  --glass-bg: rgba(255, 255, 255, 0.03);
+}
+
+.audio-vault-section {
+  padding: 80px 5%;
+  background: #000000;
+  font-family: "Share Tech Mono", monospace;
+  color: white;
+}
+
+.vault-title {
+  text-align: center;
+  color: var(--gold);
+  text-transform: uppercase;
+  letter-spacing: 3px;
+  margin-bottom: 60px;
+  font-size: clamp(1.2rem, 4vw, 2rem);
+}
+
+.audio-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+  gap: 30px;
+}
+
+/* --- AUDIO CARD --- */
+.audio-card {
+  background: var(--glass-bg);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  border-radius: 20px;
+  padding: 30px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  transition: 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+  position: relative;
+  overflow: hidden;
+}
+
+.audio-card:hover {
+  transform: translateY(-10px);
+  border-color: var(--gold);
+  background: rgba(212, 175, 55, 0.05);
+}
+
+/* --- THE ANIMATED DISC --- */
+.disc-container {
+  width: 180px;
+  height: 180px;
+  position: relative;
+  margin-bottom: 25px;
+  perspective: 1000px;
+}
+
+.vinyl-disc {
+  width: 100%;
+  height: 100%;
+  background: #111;
+  border-radius: 50%;
+  position: relative;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.5);
+  transition: transform 0.8s ease;
+}
+
+/* Realistic Grooves using repeating gradient */
+.vinyl-grooves {
+  position: absolute;
+  inset: 5px;
+  border-radius: 50%;
+  background: repeating-radial-gradient(
+    circle,
+    #111 0,
+    #111 2px,
+    #181818 3px,
+    #181818 4px
+  );
+  opacity: 0.8;
+}
+
+.vinyl-label {
+  width: 35%;
+  height: 35%;
+  border-radius: 50%;
+  background-size: cover;
+  background-position: center;
+  z-index: 2;
+  border: 2px solid #000;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.5);
+}
+
+/* Rotation logic */
+.audio-card.playing .vinyl-disc {
+  animation: spinDisc 4s linear infinite;
+}
+
+@keyframes spinDisc {
+  from {
+    transform: rotate(0deg);
+  }
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+/* --- CONTROLS --- */
+.audio-info h3 {
+  font-size: 1.1rem;
+  color: #fff;
+  margin-bottom: 5px;
+  text-align: center;
+}
+.audio-info p {
+  font-size: 0.8rem;
+  color: #888;
+  margin-bottom: 20px;
+  text-align: center;
+}
+
+.play-trigger {
+  width: 100%;
+  background: transparent;
+  border: 1px solid var(--gold);
+  color: var(--gold);
+  padding: 10px;
+  cursor: pointer;
+  font-family: inherit;
+  font-weight: bold;
+  transition: 0.3s;
+  border-radius: 5px;
+}
+
+.audio-card.playing .play-trigger {
+  background: var(--gold);
+  color: #000;
+}
+
+.progress-bar {
+  width: 100%;
+  height: 3px;
+  background: #222;
+  margin-top: 15px;
+  border-radius: 5px;
+  overflow: hidden;
+}
+
+.progress-fill {
+  width: 0%;
+  height: 100%;
+  background: var(--gold);
+}
+/* --- PORTAL / MOBILE RESPONSIVENESS FIX --- */
+
+@media (max-width: 768px) {
+  .audio-vault-section {
+    padding: 60px 15px; /* Reduce outer padding */
+  }
+
+  .vault-title {
+    margin-bottom: 40px;
+    padding: 0 10px;
+  }
+
+  .audio-grid {
+    /* Ensure it's a single column and perfectly centered */
+    grid-template-columns: 1fr;
+    max-width: 400px; /* Prevent card from being too wide on tablets */
+    margin: 0 auto;
+    gap: 20px;
+  }
+
+  .audio-card {
+    padding: 20px; /* Reduce internal card space */
+  }
+
+  /* Shrink the Disc for smaller screens */
+  .disc-container {
+    width: 150px;
+    height: 150px;
+  }
+}
+
+@media (max-width: 400px) {
+  /* Extreme Portrait (Small Androids/iPhones) */
+  .disc-container {
+    width: 120px; /* Further reduction */
+    height: 120px;
+  }
+
+  .audio-info h3 {
+    font-size: 1rem;
+  }
+
+  .audio-info p {
+    font-size: 0.75rem;
+  }
+
+  .play-trigger {
+    font-size: 0.8rem;
+    padding: 8px;
+  }
+
+  .vault-title {
+    font-size: 1.1rem;
+    letter-spacing: 1px;
+  }
+}
+
+/* Fix to ensure the disc remains a perfect circle if the card squishes */
+.vinyl-disc {
+  aspect-ratio: 1 / 1;
+}
+
+/* Styling the Scrubber */
+.audio-scrubber {
+  width: 100%;
+  margin-top: 15px;
+  cursor: pointer;
+  appearance: none;
+  -webkit-appearance: none;
+  background: #222; /* Track color */
+  height: 4px;
+  border-radius: 5px;
+  outline: none;
+}
+
+/* The Handle (Thumb) */
+.audio-scrubber::-webkit-slider-thumb {
+  appearance: none;
+  -webkit-appearance: none;
+  height: 12px;
+  width: 12px;
+  border-radius: 50%;
+  background: var(--gold);
+  cursor: grab;
+  box-shadow: 0 0 10px var(--gold);
+}
+
+.audio-scrubber::-webkit-slider-thumb:active {
+  cursor: grabbing;
+  transform: scale(1.3);
+}
+
+/* Smooth color fill for the track */
+.audio-scrubber {
+  background: linear-gradient(
+    to right,
+    var(--gold) 0%,
+    var(--gold) var(--p, 0%),
+    #222 var(--p, 0%),
+    #222 100%
+  );
+}
+
+/* celestial library */
+/* --- THEME --- */
+:root {
+  --holy-gold: #d4af37;
+  --holy-teal: #1a433e;
+}
+
+.celestial-library {
+  position: relative;
+  top: 1rem;
+  padding: 100px 5%;
+  background: #000000;
+  overflow: hidden;
+  color: white;
+  font-family: "Playfair Display", serif;
+}
+
+/* --- PARTICLES --- */
+.particles-container {
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+}
+.particle {
+  position: absolute;
+  background: radial-gradient(circle, rgb(0, 255, 255) 0%, transparent 70%);
+  border-radius: 50%;
+  opacity: 0.3;
+  animation: drift 15s infinite linear;
+}
+.p1 {
+  width: 100px;
+  height: 100px;
+  top: 10%;
+  left: 10%;
+}
+.p2 {
+  width: 150px;
+  height: 150px;
+  bottom: 20%;
+  right: 10%;
+  animation-delay: -5s;
+}
+.p3 {
+  width: 80px;
+  height: 80px;
+  top: 50%;
+  left: 40%;
+  animation-delay: -2s;
+}
+@keyframes drift {
+  0% {
+    transform: translateY(0) translateX(0);
+    opacity: 0;
+  }
+  50% {
+    opacity: 0.2;
+  }
+  100% {
+    transform: translateY(-100vh) translateX(50px);
+    opacity: 0;
+  }
+}
+
+/* --- GRID & LABELS --- */
+.library-title {
+  text-align: center;
+  color: var(--holy-gold);
+  margin-bottom: 80px;
+  letter-spacing: 3px;
+  font-weight: 400;
+}
+.book-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+  gap: 40px;
+  justify-items: center;
+}
+
+.book-label {
+  margin-top: 50px;
+  font-size: 0.9rem;
+  color: #888;
+  text-transform: uppercase;
+  letter-spacing: 2px;
+}
+
+/* --- THE FLOATING BOOK --- */
+.book-item {
+  position: relative;
+  width: 160px;
+  height: 240px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  cursor: pointer;
+}
+
+.book-craft {
+  width: 100%;
+  height: 100%;
+  background: #111;
+  border-radius: 5px 15px 15px 5px;
+  position: relative;
+  transform-style: preserve-3d;
+  box-shadow: 15px 15px 30px rgba(0, 0, 0, 0.5);
+  animation: alienFloat 5s ease-in-out infinite;
+  z-index: 2;
+}
+
+.book-craft img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  border-radius: 5px 15px 15px 5px;
+}
+
+/* Spine effect */
+.book-spine {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 10px;
+  height: 100%;
+  background: rgba(0, 0, 0, 0.3);
+  border-radius: 5px 0 0 5px;
+  box-shadow: inset -2px 0 5px rgba(255, 255, 255, 0.1);
+}
+
+/* --- THE SHADOW --- */
+.book-shadow {
+  position: absolute;
+  bottom: -60px;
+  width: 120px;
+  height: 15px;
+  background: rgba(0, 255, 242, 0.7);
+  border-radius: 50%;
+  filter: blur(12px);
+  animation: shadowPulse 5s ease-in-out infinite;
+  z-index: 1;
+}
+
+/* --- ANIMATIONS --- */
+@keyframes alienFloat {
+  0%,
+  100% {
+    transform: translateY(0) rotateX(5deg);
+  }
+  50% {
+    transform: translateY(-35px) rotateX(0deg);
+  }
+}
+
+@keyframes shadowPulse {
+  0%,
+  100% {
+    transform: scale(1);
+    opacity: 0.6;
+  }
+  50% {
+    transform: scale(0.6);
+    opacity: 0.2;
+  }
+}
+
+/* --- MODAL --- */
+.book-modal {
+  position: fixed;
+  inset: 0;
+  background: rgba(0, 0, 0, 0.9);
+  display: none;
+  justify-content: center;
+  align-items: center;
+  z-index: 99999;
+  backdrop-filter: blur(10px);
+}
+
+.modal-content {
+  background: #111;
+  border: 1px solid var(--holy-gold);
+  width: 90%;
+  max-width: 700px;
+  border-radius: 20px;
+  position: relative;
+  padding: 40px;
+}
+
+.close-modal {
+  position: absolute;
+  top: 20px;
+  right: 20px;
+  font-size: 30px;
+  cursor: pointer;
+  color: #555;
+}
+
+.modal-body {
+  display: flex;
+  gap: 30px;
+  align-items: center;
+}
+
+.modal-img-wrap {
+  flex: 1;
+}
+.modal-img-wrap img {
+  width: 100%;
+  border-radius: 10px;
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.5);
+}
+
+.modal-text {
+  flex: 1.5;
+}
+.modal-text h3 {
+  color: var(--holy-gold);
+  margin-bottom: 20px;
+  font-size: 1.8rem;
+}
+.modal-text p {
+  color: #ccc;
+  line-height: 1.6;
+  margin-bottom: 30px;
+  font-family: sans-serif;
+}
+
+.read-btn {
+  background: var(--holy-gold);
+  color: black;
+  padding: 12px 30px;
+  text-decoration: none;
+  font-weight: bold;
+  border-radius: 50px;
+  display: inline-block;
+  transition: 0.3s;
+}
+
+@media (max-width: 600px) {
+  .modal-body {
+    flex-direction: column;
+    text-align: center;
+  }
+  .library-title {
+    font-size: 1.4rem;
+  }
+}
+/* --- Footer --- */
+.footer {
+  background-color: #0f0f0f; /* Very dark background for professional look */
+  color: #a0a0a0;
+  padding: 0;
+  position: relative;
+  overflow: hidden;
+  font-size: 0.95rem;
+  border-top: 1px solid rgba(255, 255, 255, 0.05);
+  margin-bottom: 0;
+}
+
+/* Footer Marquee */
+.footer-marquee {
+  background: var(--primary-color);
+  color: var(--secondary-color);
+  padding: 12px 0;
+  overflow: hidden;
+  position: relative;
+  font-weight: 800;
+  text-transform: uppercase;
+  letter-spacing: 2px;
+  font-size: 0.8rem;
+  display: flex;
+  z-index: 2;
+}
+
+.marquee-content {
+  display: flex;
+  animation: marqueeScroll 30s linear infinite;
+  white-space: nowrap;
+}
+
+.marquee-content span {
+  padding: 0 30px;
+  display: inline-flex;
+  align-items: center;
+}
+
+.marquee-content .separator {
+  color: rgba(0, 0, 0, 0.3);
+  font-size: 1.2em;
+}
+
+@keyframes marqueeScroll {
+  0% {
+    transform: translateX(0);
+  }
+  100% {
+    transform: translateX(-50%);
+  }
+}
+
+.footer .container {
+  padding: 60px 20px 20px;
+  max-width: 1200px;
+  margin: 0 auto;
+}
+
+.footer-content {
+  display: grid;
+  grid-template-columns: 1.5fr 1fr 1fr 1.2fr;
+  gap: 40px;
+  margin-bottom: 50px;
+}
+
+.footer-col h4 {
+  color: var(--white);
+  font-size: 1.1rem;
+  margin-bottom: 1.5rem;
+  position: relative;
+  display: inline-block;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+}
+
+.footer-col h4::after {
+  content: "";
+  position: absolute;
+  left: 0;
+  bottom: -8px;
+  width: 30px;
+  height: 2px;
+  background: var(--primary-color);
+}
+
+/* Brand Col */
+.footer-logo {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  margin-bottom: 20px;
+  color: var(--white);
+  font-weight: 800;
+  font-size: 1.5rem;
+}
+
+.footer-logo img {
+  height: 40px;
+  width: auto;
+}
+
+.brand-col p {
+  line-height: 1.6;
+  margin-bottom: 25px;
+  opacity: 0.8;
+}
+
+.social-links {
+  display: flex;
+  gap: 15px;
+}
+
+.social-icon {
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+  background: rgba(255, 255, 255, 0.05);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: var(--white);
+  transition: all 0.3s ease;
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  text-decoration: none;
+}
+
+.social-icon:hover {
+  background: var(--primary-color);
+  color: var(--secondary-color);
+  transform: translateY(-3px);
+  box-shadow: 0 5px 15px rgba(192, 160, 98, 0.3);
+}
+
+/* Links Col */
+.links-col ul {
+  list-style: none;
+}
+
+.links-col li {
+  margin-bottom: 12px;
+}
+
+.links-col a {
+  color: #a0a0a0;
+  text-decoration: none;
+  transition: 0.3s;
+  display: inline-block;
+  position: relative;
+}
+
+.links-col a:hover {
+  color: var(--primary-color);
+  transform: translateX(5px);
+}
+
+/* Contact Col */
+.contact-col p {
+  margin-bottom: 20px;
+  line-height: 1.6;
+}
+
+.contact-info span {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  margin-bottom: 12px;
+}
+
+.contact-info i {
+  width: 18px;
+  color: var(--primary-color);
+}
+
+/* Carousel Col */
+.footer-carousel {
+  width: 100%;
+  height: 220px;
+  border-radius: 12px;
+  overflow: hidden;
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.4);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+.footer-carousel .swiper-slide img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.carousel-overlay {
+  text-align: center;
+  margin-top: 15px;
+  font-size: 0.9rem;
+  color: var(--primary-color);
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+}
+
+/* Footer Bottom */
+.footer-bottom {
+  border-top: 1px solid rgba(255, 255, 255, 0.05);
+  padding-top: 25px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  font-size: 0.85rem;
+  opacity: 0.6;
+}
+
+/* Responsive Footer */
+@media (max-width: 992px) {
+  .footer-content {
+    grid-template-columns: 1fr 1fr;
+  }
+}
+
+@media (max-width: 576px) {
+  .footer-content {
+    grid-template-columns: 1fr;
+    gap: 30px;
+  }
+  .footer-bottom {
+    flex-direction: column;
+    gap: 10px;
+    text-align: center;
+  }
+}
