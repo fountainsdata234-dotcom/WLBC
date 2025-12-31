@@ -1,3 +1,9 @@
+// This forces the browser to load voices as soon as the page is ready
+window.speechSynthesis.getVoices();
+if (speechSynthesis.onvoiceschanged !== undefined) {
+  speechSynthesis.onvoiceschanged = () => speechSynthesis.getVoices();
+}
+
 // --- DATABASE ---
 const sermonDB = [
   {
@@ -201,7 +207,8 @@ const messageText = document.getElementById("announcement-text").innerText;
 clockTrigger.addEventListener("click", () => {
   // Show the container
   announcement.classList.add("show");
-
+    window.speechSynthesis.cancel(); // Clear anything stuck
+        window.speechSynthesis.resume(); // FORCE the browser to wake up the audio context
   // SYSTEM INBUILT SPEECH (The Clock reads the message)
   if ("speechSynthesis" in window) {
     // Cancel any currently speaking text
@@ -404,3 +411,4 @@ function rotateWords() {
 }
 
 setInterval(rotateWords, 4000);
+
