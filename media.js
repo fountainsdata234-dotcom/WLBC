@@ -78,7 +78,7 @@ document.getElementById("cinemaMode").addEventListener("click", function () {
   }
 });
 
-// --- 2. UPDATED LAUNCHMEDIA FUNCTION ---
+// --- 2. UPDATED LAUNCHMEDIA FUNCTION (FIXED FOR MOBILE SOUND) ---
 function launchMedia(url) {
   const videoPlayer = document.getElementById("mainVideoPlayer");
   const backdrop = document.getElementById("tvBackdrop");
@@ -92,16 +92,29 @@ function launchMedia(url) {
 
   // Check URL Type (YouTube vs Local)
   if (url.includes("youtube.com") || url.includes("youtu.be")) {
+    // FIX: Explicitly add mute=0 and origin to YouTube links
     videoPlayer.innerHTML = `
-      <iframe width="100%" height="100%" 
-        src="${url}?autoplay=1&rel=0&modestbranding=1" 
+      <iframe id="activeIframe" width="100%" height="100%" 
+        src="${url}?autoplay=1&mute=0&rel=0&modestbranding=1&origin=${window.location.origin}" 
         frameborder="0" allow="autoplay; encrypted-media" allowfullscreen>
       </iframe>`;
   } else {
+    // FIX: Remove 'autoplay' from the tag and use JS .play() instead
     videoPlayer.innerHTML = `
-      <video width="100%" height="100%" controls autoplay style="object-fit: cover;">
+      <video id="activeLocalVideo" width="100%" height="100%" controls style="object-fit: cover;">
         <source src="${url}" type="video/mp4">
+        Your browser does not support the video tag.
       </video>`;
+
+    // Force the video to play with sound after it is added to the screen
+    const localVid = document.getElementById("activeLocalVideo");
+    localVid.muted = false; // Ensure it's not muted
+    localVid.volume = 1.0; // Full volume
+    localVid.play().catch((error) => {
+      console.log(
+        "Browser blocked auto-play with sound. User must click play."
+      );
+    });
   }
 
   // Close the drawer
@@ -207,8 +220,8 @@ const messageText = document.getElementById("announcement-text").innerText;
 clockTrigger.addEventListener("click", () => {
   // Show the container
   announcement.classList.add("show");
-    window.speechSynthesis.cancel(); // Clear anything stuck
-        window.speechSynthesis.resume(); // FORCE the browser to wake up the audio context
+  window.speechSynthesis.cancel(); // Clear anything stuck
+  window.speechSynthesis.resume(); // FORCE the browser to wake up the audio context
   // SYSTEM INBUILT SPEECH (The Clock reads the message)
   if ("speechSynthesis" in window) {
     // Cancel any currently speaking text
@@ -411,4 +424,3 @@ function rotateWords() {
 }
 
 setInterval(rotateWords, 4000);
-
