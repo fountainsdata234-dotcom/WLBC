@@ -1,0 +1,580 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="light">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Privacy Policy | Winning City</title>
+
+    <!-- SEO Meta Tags -->
+    <meta
+      name="description"
+      content="Privacy Policy for Winning City (WLBC). Learn how we handle your data, prayer requests, and digital privacy."
+    />
+    <meta
+      name="keywords"
+      content="Privacy Policy, WLBC Data Protection, Church Privacy, Prayer Request Confidentiality"
+    />
+    <meta name="author" content="WLBC IT Team" />
+    <meta name="robots" content="noindex, follow" />
+
+    <!-- Open Graph / Facebook -->
+    <meta property="og:type" content="website" />
+    <meta property="og:title" content="Privacy Policy | Winning City" />
+    <meta
+      property="og:description"
+      content="Our commitment to your privacy and data security at Winning City."
+    />
+    <meta property="og:image" content="image/Retouch_20241018_160117602.png" />
+
+    <!-- Twitter -->
+    <meta property="twitter:card" content="summary_large_image" />
+    <meta property="twitter:title" content="Privacy Policy | Winning City" />
+    <meta
+      property="twitter:description"
+      content="Our commitment to your privacy and data security at Winning City."
+    />
+    <meta
+      property="twitter:image"
+      content="image/Retouch_20241018_160117602.png"
+    />
+    <link
+      rel="icon"
+      type="image/png"
+      href="image/Retouch_20241018_160117602.png"
+    />
+
+    <!-- Fonts -->
+    <link
+      href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@700&family=Plus+Jakarta+Sans:wght@300;400;600&family=Share+Tech+Mono&display=swap"
+      rel="stylesheet"
+    />
+    <script src="https://unpkg.com/lucide@latest"></script>
+    <link rel="stylesheet" href="style.css" />
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.css"
+    />
+
+    <style>
+      :root {
+        --holy-teal: #1a433e;
+        --holy-gold: #d4af37;
+        --soft-cream: #fdfbf7;
+        --glass: rgba(255, 255, 255, 0.95);
+      }
+
+      * {
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+      }
+
+      body {
+        font-family: "Plus Jakarta Sans", sans-serif;
+        background-color: var(--soft-cream);
+        color: #333;
+        line-height: 1.8;
+      }
+
+      /* --- IMMERSIVE HERO --- */
+      .policy-hero {
+        height: 40vh;
+        background: linear-gradient(
+            rgba(26, 67, 62, 0.85),
+            rgba(26, 67, 62, 0.85)
+          ),
+          url("https://images.unsplash.com/photo-1438232992991-995b7058bbb3?auto=format&fit=crop&w=1600&q=80")
+            no-repeat center center/cover;
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+        text-align: center;
+        color: white;
+        padding: 20px;
+      }
+
+      .policy-hero h1 {
+        font-family: "Playfair Display", serif;
+        font-size: clamp(2.5rem, 6vw, 4rem);
+        margin-bottom: 10px;
+        color: var(--holy-gold);
+      }
+
+      .policy-hero p {
+        font-family: "Share Tech Mono", monospace;
+        letter-spacing: 3px;
+        text-transform: uppercase;
+        font-size: 0.9rem;
+        opacity: 0.8;
+      }
+
+      /* --- MAIN CONTENT LAYOUT --- */
+      .policy-container {
+        max-width: 1200px;
+        margin: -50px auto 100px;
+        display: grid;
+        grid-template-columns: 300px 1fr; /* Wide layout */
+        gap: 40px;
+        padding: 0 20px;
+        position: relative;
+        z-index: 10;
+      }
+
+      /* Side Navigation */
+      .policy-nav {
+        position: sticky;
+        top: 100px;
+        height: fit-content;
+        background: white;
+        padding: 30px;
+        border-radius: 15px;
+        box-shadow: 0 10px 30px rgba(0, 0, 0, 0.05);
+        border-left: 4px solid var(--holy-gold);
+      }
+
+      .policy-nav h3 {
+        font-size: 0.8rem;
+        text-transform: uppercase;
+        letter-spacing: 2px;
+        margin-bottom: 20px;
+        color: var(--holy-teal);
+      }
+
+      .policy-nav ul {
+        list-style: none;
+      }
+      .policy-nav li {
+        margin-bottom: 15px;
+      }
+      .policy-nav a {
+        text-decoration: none;
+        color: #777;
+        font-size: 0.95rem;
+        transition: 0.3s;
+        display: block;
+      }
+
+      .policy-nav a:hover {
+        color: var(--holy-gold);
+        transform: translateX(5px);
+      }
+
+      /* Content Blocks */
+      .policy-content {
+        background: var(--glass);
+        padding: 60px;
+        border-radius: 20px;
+        box-shadow: 0 20px 50px rgba(0, 0, 0, 0.1);
+      }
+
+      .content-section {
+        margin-bottom: 60px;
+      }
+      .content-section h2 {
+        font-family: "Playfair Display", serif;
+        color: var(--holy-teal);
+        font-size: 2rem;
+        margin-bottom: 20px;
+        display: flex;
+        align-items: center;
+        gap: 15px;
+      }
+
+      .content-section h2::after {
+        content: "";
+        flex-grow: 1;
+        height: 1px;
+        background: #eee;
+      }
+
+      .content-section p {
+        margin-bottom: 20px;
+        color: #555;
+      }
+
+      .highlight-box {
+        background: rgba(212, 175, 55, 0.05);
+        border-left: 3px solid var(--holy-gold);
+        padding: 20px;
+        margin: 20px 0;
+        font-style: italic;
+      }
+
+      /* --- FOOTER END --- */
+      .policy-footer {
+        text-align: center;
+        padding: 60px 20px;
+        background: var(--holy-teal);
+        color: white;
+      }
+
+      .policy-footer p {
+        font-family: "Share Tech Mono", monospace;
+        font-size: 0.8rem;
+        opacity: 0.6;
+      }
+
+      /* --- RESPONSIVENESS --- */
+      @media (max-width: 1024px) {
+        .policy-container {
+          grid-template-columns: 1fr;
+          margin-top: 20px;
+        }
+        .policy-nav {
+          display: none;
+        } /* Hide side nav on mobile for space */
+        .policy-content {
+          padding: 30px;
+        }
+      }
+    </style>
+  </head>
+  <body>
+    <!-- Smart Navbar -->
+    <nav class="navbar" id="main-nav">
+      <div class="nav-container">
+        <div class="logo">
+          <img src="image/logo.png" alt="Winning City WLBC Logo" />
+          <span>WLBC</span>
+        </div>
+
+        <ul class="nav-links">
+          <li><a href="index.html" class="nav-item">Home</a></li>
+          <li><a href="about.html" class="nav-item">About</a></li>
+          <li><a href="media.html" class="nav-item">Media</a></li>
+          <li class="nav-item dropdown">
+            <a href="#" class="dropbtn"
+              >Useful Links
+              <i data-lucide="chevron-down" class="chevron-icon"></i
+            ></a>
+            <div class="dropdown-menu">
+              <a href="solomon.html">Rev S.G Erochukwu</a>
+              <a href="event.html">Event Calender</a>
+              <a href="prayer.html">Prayer Request</a>
+              <a href="contact.html">Contact Us</a>
+              <a href="privacy.html" class="active">Privacy Policy</a>
+            </div>
+          </li>
+          <!-- Mobile-only theme toggle -->
+          <li class="nav-item-mobile-only">
+            <button
+              id="theme-toggle-mobile"
+              class="theme-toggle-btn"
+              title="Toggle Theme"
+            >
+              <span>Theme</span>
+              <i data-lucide="sun" class="sun-icon"></i>
+              <i data-lucide="moon" class="moon-icon"></i>
+            </button>
+          </li>
+        </ul>
+
+        <div class="nav-actions">
+          <button
+            id="theme-toggle-desktop"
+            class="theme-toggle-btn"
+            title="Toggle Theme"
+          >
+            <i data-lucide="sun" class="sun-icon"></i>
+            <i data-lucide="moon" class="moon-icon"></i>
+          </button>
+          <div class="burger">
+            <span></span>
+            <span></span>
+            <span></span>
+          </div>
+        </div>
+      </div>
+    </nav>
+
+    <!-- Header Hero -->
+    <header class="policy-hero">
+      <p>Winning City Global</p>
+      <h1>Privacy & Policy</h1>
+      <p>Last Updated: January 2026</p>
+    </header>
+
+    <main class="policy-container">
+      <!-- Side Navigation (Visible on Desktop) -->
+      <aside class="policy-nav">
+        <h3>Table of Contents</h3>
+        <ul>
+          <li><a href="#introduction">1. Introduction</a></li>
+          <li><a href="#data-collection">2. Data Collection</a></li>
+          <li><a href="#prayer-requests">3. Prayer Intercession</a></li>
+          <li><a href="#media-streaming">4. WLBC TV & Media</a></li>
+          <li><a href="#cookies">5. Digital Identity</a></li>
+          <li><a href="#contact">6. Contact Support</a></li>
+        </ul>
+      </aside>
+
+      <!-- Main Content (Wide) -->
+      <div class="policy-content">
+        <section id="introduction" class="content-section">
+          <h2>Introduction</h2>
+          <p>
+            Welcome to Winning City. We are committed to protecting your privacy
+            and ensuring that your spiritual journey through our digital portal
+            remains secure and sanctified. This policy outlines how we handle
+            the information you entrust to us.
+          </p>
+          <div class="highlight-box">
+            "For God is not the author of confusion but of peace..." — 1
+            Corinthians 14:33. We strive for transparency in all our digital
+            operations.
+          </div>
+        </section>
+
+        <section id="data-collection" class="content-section">
+          <h2>Data Collection</h2>
+          <p>
+            We collect information that you voluntarily provide to us when you
+            register on our portal, express an interest in obtaining information
+            about us or our services, or when you participate in activities on
+            the site.
+          </p>
+          <p>
+            <strong>Personal Identifiers:</strong> Name, Email Address, Phone
+            Number (including country data), and City of residence.
+          </p>
+        </section>
+
+        <section id="prayer-requests" class="content-section">
+          <h2>Prayer Intercession</h2>
+          <p>
+            Any information shared via our "Altar of Intercession" (Prayer
+            Request Form) is treated with the highest level of confidentiality.
+            This data is transmitted directly to our ministerial team for the
+            purpose of prayer and spiritual support.
+          </p>
+          <p>
+            We do not sell, rent, or trade your prayer requests with third-party
+            organizations for marketing purposes.
+          </p>
+        </section>
+
+        <section id="media-streaming" class="content-section">
+          <h2>WLBC TV & Media</h2>
+          <p>
+            Our media portal uses high-frequency digital transmission protocols.
+            When you interact with WLBC TV or our Audio Vault, we may collect
+            technical data regarding your connection speed and device type to
+            ensure the "Rhema" reaches you without interruption.
+          </p>
+          <p>
+            YouTube embeds and external media players follow their respective
+            privacy protocols, which are integrated into our secure vault
+            system.
+          </p>
+        </section>
+
+        <section id="cookies" class="content-section">
+          <h2>Digital Identity (Cookies)</h2>
+          <p>
+            Winning City uses small data files known as "Cookies" to remember
+            your preferences (like theme settings and video volume). These
+            cookies help us provide a seamless experience as you navigate
+            between the Sanctuary and the Media Hub.
+          </p>
+        </section>
+
+        <section id="contact" class="content-section">
+          <h2>Contact & Support</h2>
+          <p>
+            If you have questions regarding your data or this policy, you may
+            contact our Digital Levites via the Media & TV chat or email us
+            directly at <strong>fountainsdata234@gmail.com</strong>.
+          </p>
+        </section>
+      </div>
+      <div id="footer-sensor"></div>
+    </main>
+
+    <!-- Chatbot Container -->
+    <div id="chatbot-container" class="chatbot-container">
+      <div class="chatbot-header">
+        <h5>Chat with WLBC</h5>
+        <button id="close-chatbot" title="Close Chat">
+          <i data-lucide="x"></i>
+        </button>
+      </div>
+      <div class="chatbot-body">
+        <iframe
+          src="https://www.chatbase.co/chatbot-iframe/FObJVCn5bYaLctTwaKPNn"
+          width="100%"
+          style="height: 100%; border: none"
+        ></iframe>
+      </div>
+    </div>
+    <!-- Back to Top Button -->
+    <button id="back-to-top" title="Go to top">
+      <i data-lucide="arrow-up"></i>
+    </button>
+    <!-- Chatbot Toggle Button -->
+    <button id="chatbot-toggle" class="chatbot-toggle" title="Open Chat">
+      <i data-lucide="bot-message-square"></i>
+    </button>
+    <!-- 2. THE DYNAMIC FOOTER -->
+    <footer class="divine-dynamic-footer" id="holyFooter">
+      <div class="footer-grow-wrapper">
+        <div class="footer-inner-content">
+          <!-- Founder Section (Left Side / Top on Mobile) -->
+          <div class="footer-founder-aside">
+            <div class="founder-card">
+              <div class="founder-img-box">
+                <img src="image/1749187985514.jpg" alt="Rev. S.G Erochukwu" />
+              </div>
+              <div class="founder-badge">
+                <span class="founder-title">FOUNDER</span>
+                <span class="founder-name">Rev. S.G Erochukwu</span>
+              </div>
+            </div>
+          </div>
+
+          <div class="footer-right-panel">
+            <div class="footer-top-row">
+              <div class="footer-logo-box">
+                <!-- Placeholder for your Logo -->
+                <div class="logo-space">
+                  <img
+                    src="image/logo.png"
+                    alt="Winning City Church Logo"
+                    class="f-logo"
+                  />
+                </div>
+                <p>WINNING CITY: GOD IS OUR RIGHTEOUSNESS.</p>
+              </div>
+
+              <!-- Daily Word Carousel -->
+              <div class="footer-word-carousel">
+                <div class="carousel-track" id="footerTrack">
+                  <div class="word-card active">
+                    <span>"The Lord is my Shepherd, I shall not want."</span>
+                  </div>
+                  <div class="word-card">
+                    <span>"Victory is ours through Christ who loves us."</span>
+                  </div>
+                  <div class="word-card">
+                    <span>"Be still, and know that I am God."</span>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            <div class="footer-main-grid">
+              <div class="f-col">
+                <h4>Navigation</h4>
+                <a href="index.html">Home</a>
+                <a href="about.html">Ministries</a>
+                <a href="#">Giving</a>
+              </div>
+              <div class="f-col">
+                <h4>Contact Us</h4>
+                <div
+                  style="
+                    display: flex;
+                    align-items: flex-start;
+                    gap: 10px;
+                    margin-bottom: 15px;
+                    color: #ccc;
+                  "
+                >
+                  <i
+                    data-lucide="map-pin"
+                    style="
+                      color: var(--holy-gold);
+                      min-width: 20px;
+                      margin-top: 3px;
+                    "
+                  ></i>
+                  <span>Klm 4 Osusu Amaukwa Aba Abia state</span>
+                </div>
+                <div
+                  style="
+                    display: flex;
+                    align-items: center;
+                    gap: 10px;
+                    margin-bottom: 15px;
+                    color: #ccc;
+                  "
+                >
+                  <i
+                    data-lucide="phone"
+                    style="color: var(--holy-gold); min-width: 20px"
+                  ></i>
+                  <span>+2348029772375</span>
+                </div>
+                <div
+                  style="
+                    display: flex;
+                    align-items: center;
+                    gap: 10px;
+                    margin-bottom: 15px;
+                    color: #ccc;
+                  "
+                >
+                  <i
+                    data-lucide="mail"
+                    style="color: var(--holy-gold); min-width: 20px"
+                  ></i>
+                  <span>fountainsdata234@gmail.com</span>
+                </div>
+              </div>
+              <div class="f-col">
+                <h4>Join Us</h4>
+                <div class="social-links">
+                  <div class="wrapper">
+                    <div class="button">
+                      <div class="icon">
+                        <i class="fa fa-facebook"></i>
+                      </div>
+                    </div>
+
+                    <div class="button">
+                      <div class="icon">
+                        <i class="fa fa-twitter"></i>
+                      </div>
+                    </div>
+
+                    <div class="button">
+                      <div class="icon">
+                        <i class="fa fa-instagram"></i>
+                      </div>
+                    </div>
+
+                    <div class="button">
+                      <div class="icon">
+                        <i class="fa fa-youtube"></i>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            <div class="footer-bottom-bar">
+              <p>
+                &copy; 2025 Winning City Global. Designed and developed by WLBC
+                IT Team. All rights reserved.
+              </p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </footer>
+
+    <script src="script.js"></script>
+    <script>
+      // Smooth Scrolling for the Nav links
+      document.querySelectorAll(".policy-nav a").forEach((anchor) => {
+        anchor.addEventListener("click", function (e) {
+          e.preventDefault();
+          document.querySelector(this.getAttribute("href")).scrollIntoView({
+            behavior: "smooth",
+          });
+        });
+      });
+    </script>
+  </body>
+</html>

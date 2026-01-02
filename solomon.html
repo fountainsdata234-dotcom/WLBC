@@ -1,0 +1,757 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="light">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>The First Family | Winning City</title>
+
+    <!-- SEO Meta Tags -->
+    <meta
+      name="description"
+      content="Meet Rev. S.G Erochukwu and the First Family of Winning City. Leaders dedicated to righteousness and kingdom expansion."
+    />
+    <meta
+      name="keywords"
+      content="Rev S.G Erochukwu, Pastor Grace Erochukwu, Winning City Founder, WLBC Leadership, First Family"
+    />
+    <meta name="author" content="WLBC IT Team" />
+    <meta name="robots" content="index, follow" />
+
+    <!-- Open Graph / Facebook -->
+    <meta property="og:type" content="website" />
+    <meta property="og:title" content="The First Family | Winning City" />
+    <meta
+      property="og:description"
+      content="Meet the visionary leaders behind Winning City, Rev. S.G. Erochukwu and Pastor Grace Erochukwu."
+    />
+    <meta property="og:image" content="image/Retouch_20241018_160117602.png" />
+
+    <!-- Twitter -->
+    <meta property="twitter:card" content="summary_large_image" />
+    <meta property="twitter:title" content="The First Family | Winning City" />
+    <meta
+      property="twitter:description"
+      content="Meet the visionary leaders behind Winning City, Rev. S.G. Erochukwu and Pastor Grace Erochukwu."
+    />
+    <meta
+      property="twitter:image"
+      content="image/Retouch_20241018_160117602.png"
+    />
+    <link
+      rel="icon"
+      type="image/png"
+      href="image/Retouch_20241018_160117602.png"
+    />
+
+    <!-- Fonts -->
+    <link
+      href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,700;1,400&family=Plus+Jakarta+Sans:wght@300;400;600&display=swap"
+      rel="stylesheet"
+    />
+    <script src="https://unpkg.com/lucide@latest"></script>
+    <link rel="stylesheet" href="style.css" />
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.css"
+    />
+    <link
+      rel="stylesheet"
+      href="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.css"
+    />
+
+    <style>
+      :root {
+        --holy-teal: #1a433e;
+        --holy-gold: #d4af37;
+        --holy-cream: #fdfbf7;
+        --glass: rgba(255, 255, 255, 0.1);
+        --glass-border: rgba(255, 255, 255, 0.2);
+      }
+
+      * {
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+      }
+
+      body {
+        font-family: "Plus Jakarta Sans", sans-serif;
+        background-color: #0d1b1a; /* Deep dark teal */
+        color: var(--holy-cream);
+        line-height: 1.6;
+        overflow-x: hidden;
+      }
+
+      /* --- Animated Divine Background --- */
+      .page-bg {
+        position: fixed;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        background: radial-gradient(
+          circle at 50% 50%,
+          #1a433e 0%,
+          #0d1b1a 100%
+        );
+        z-index: -1;
+      }
+
+      .light-orb {
+        position: absolute;
+        width: 600px;
+        height: 600px;
+        background: radial-gradient(
+          circle,
+          rgba(212, 175, 55, 0.05) 0%,
+          transparent 70%
+        );
+        border-radius: 50%;
+        animation: float 20s infinite alternate;
+      }
+
+      @keyframes float {
+        from {
+          transform: translate(-10%, -10%);
+        }
+        to {
+          transform: translate(20%, 20%);
+        }
+      }
+
+      /* --- Hero Section --- */
+      .hero {
+        height: 80vh;
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+        text-align: center;
+        padding: 20px;
+        background: linear-gradient(to bottom, transparent, #0d1b1a);
+      }
+
+      .hero h1 {
+        font-family: "Playfair Display", serif;
+        font-size: clamp(3rem, 10vw, 6rem);
+        color: var(--holy-gold);
+        margin-bottom: 10px;
+        opacity: 0;
+        transform: translateY(30px);
+        animation: reveal 1.5s forwards 0.5s;
+      }
+
+      .hero p {
+        font-size: 1.2rem;
+        letter-spacing: 4px;
+        text-transform: uppercase;
+        opacity: 0;
+        animation: reveal 1.5s forwards 1s;
+      }
+
+      @keyframes reveal {
+        to {
+          opacity: 1;
+          transform: translateY(0);
+        }
+      }
+
+      /* --- Layout Containers --- */
+      .container {
+        max-width: 1100px;
+        margin: 0 auto;
+        padding: 0 20px 100px;
+      }
+
+      .founder-row {
+        display: flex;
+        gap: 50px;
+        align-items: center;
+        margin-bottom: 120px;
+        opacity: 0;
+        transform: translateY(50px);
+        transition: 1s all ease-out;
+      }
+
+      .founder-row.show {
+        opacity: 1;
+        transform: translateY(0);
+      }
+
+      .founder-row.reverse {
+        flex-direction: row-reverse;
+      }
+
+      /* --- Glassmorphism Image Frame --- */
+      .image-frame {
+        flex: 1;
+        position: relative;
+        padding: 15px;
+        background: var(--glass);
+        backdrop-filter: blur(10px);
+        border: 1px solid var(--glass-border);
+        border-radius: 30px;
+        box-shadow: 0 25px 50px rgba(0, 0, 0, 0.3);
+      }
+
+      .image-frame img {
+        width: 100%;
+        height: 500px;
+        object-fit: cover;
+        border-radius: 20px;
+        display: block;
+      }
+
+      /* --- Biography Content --- */
+      .bio-content {
+        flex: 1.2;
+      }
+
+      .bio-content h2 {
+        font-family: "Playfair Display", serif;
+        font-size: 3rem;
+        color: var(--holy-gold);
+        margin-bottom: 20px;
+      }
+
+      .bio-tag {
+        display: inline-block;
+        padding: 5px 15px;
+        border: 1px solid var(--holy-gold);
+        border-radius: 50px;
+        font-size: 0.8rem;
+        color: var(--holy-gold);
+        margin-bottom: 15px;
+        text-transform: uppercase;
+      }
+
+      .bio-text {
+        font-size: 1.1rem;
+        color: #ccc;
+        margin-bottom: 20px;
+      }
+
+      /* --- Children Section --- */
+      .children-section {
+        text-align: center;
+        margin-top: 50px;
+      }
+
+      .children-grid {
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+        gap: 30px;
+        margin-top: 50px;
+      }
+
+      .child-card {
+        background: var(--glass);
+        backdrop-filter: blur(15px);
+        border: 1px solid var(--glass-border);
+        border-radius: 20px;
+        padding: 30px;
+        transition: 0.4s;
+        text-align: center;
+      }
+
+      .child-card:hover {
+        background: rgba(255, 255, 255, 0.15);
+        transform: translateY(-10px);
+        border-color: var(--holy-gold);
+      }
+
+      .child-img {
+        width: 120px;
+        height: 120px;
+        border-radius: 50%;
+        margin: 0 auto 20px;
+        border: 3px solid var(--holy-gold);
+        object-fit: cover;
+      }
+
+      .child-card h3 {
+        color: var(--holy-gold);
+        margin-bottom: 10px;
+      }
+
+      /* --- Footer --- */
+      .footer-spacer {
+        height: 200px;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        border-top: 1px solid rgba(255, 255, 255, 0.05);
+      }
+
+      /* --- Responsive Design --- */
+      @media (max-width: 900px) {
+        .founder-row,
+        .founder-row.reverse {
+          flex-direction: column;
+          text-align: center;
+        }
+        .image-frame {
+          width: 100%;
+          max-width: 400px;
+        }
+        .hero h1 {
+          font-size: 3.5rem;
+        }
+      }
+
+      /* Override for site-main-content to allow custom background */
+      .site-main-content {
+        background: transparent !important;
+        box-shadow: none !important;
+      }
+
+      /* Force Footer Visibility on this page */
+      #holyFooter {
+        opacity: 1 !important;
+        grid-template-rows: 1fr !important;
+      }
+    </style>
+  </head>
+  <body>
+    <!-- Smart Navbar -->
+    <nav class="navbar" id="main-nav">
+      <div class="nav-container">
+        <div class="logo">
+          <img src="image/logo.png" alt="Winning City WLBC Logo" />
+          <span>WLBC</span>
+        </div>
+
+        <ul class="nav-links">
+          <li><a href="index.html" class="nav-item">Home</a></li>
+          <li><a href="about.html" class="nav-item">About</a></li>
+          <li><a href="media.html" class="nav-item">Media</a></li>
+          <li class="nav-item dropdown">
+            <a href="#" class="dropbtn"
+              >Useful Links
+              <i data-lucide="chevron-down" class="chevron-icon"></i
+            ></a>
+            <div class="dropdown-menu">
+              <a href="solomon.html">Rev S.G Erochukwu</a>
+              <a href="event.html">Event Calender</a>
+              <a href="prayer.html">Prayer Request</a>
+              <a href="contact.html">Contact Us</a>
+              <a href="privacy.html">Privacy Policy</a>
+            </div>
+          </li>
+          <li class="nav-item-mobile-only">
+            <button id="theme-toggle-mobile" class="theme-toggle-btn">
+              <span>Theme</span>
+              <i data-lucide="sun" class="sun-icon"></i>
+              <i data-lucide="moon" class="moon-icon"></i>
+            </button>
+          </li>
+        </ul>
+
+        <div class="nav-actions">
+          <button id="theme-toggle-desktop" class="theme-toggle-btn">
+            <i data-lucide="sun" class="sun-icon"></i>
+            <i data-lucide="moon" class="moon-icon"></i>
+          </button>
+          <div class="burger"><span></span><span></span><span></span></div>
+        </div>
+      </div>
+    </nav>
+
+    <div class="site-main-content">
+      <div class="page-bg">
+        <div class="light-orb"></div>
+      </div>
+
+      <!-- Hero Header -->
+      <header class="hero">
+        <p>Leaders of the City</p>
+        <h1>The First Family</h1>
+      </header>
+
+      <main class="container">
+        <!-- Founder (Husband) -->
+        <section class="founder-row reveal">
+          <div class="image-frame">
+            <!-- Replace with your actual image -->
+            <img
+              src="https://images.unsplash.com/photo-1507679799987-c73779587ccf?auto=format&fit=crop&w=800&q=80"
+              alt="Founder"
+            />
+          </div>
+          <div class="bio-content">
+            <span class="bio-tag">Senior Pastor & Founder</span>
+            <h2>Rev. S.G. Erochukwu</h2>
+            <div class="bio-text">
+              <p>
+                Called with a mandate to possess the land and establish the
+                Kingdom of God in the hearts of men, Rev. S.G. Erochukwu has
+                spent over two decades in ministry. His teachings are centered
+                on the power of the Word and the tangible presence of the Holy
+                Spirit.
+              </p>
+              <br />
+              <p>
+                Under his leadership, Winning City has expanded from a small
+                fellowship into a global community of believers dedicated to
+                kingdom expansion and spiritual transformation.
+              </p>
+            </div>
+          </div>
+        </section>
+
+        <!-- First Lady (Wife) -->
+        <section class="founder-row reverse reveal">
+          <div class="image-frame">
+            <!-- Replace with your actual image -->
+            <img
+              src="https://images.unsplash.com/photo-1516738901171-8eb4fc13bd20?auto=format&fit=crop&w=800&q=80"
+              alt="First Lady"
+            />
+          </div>
+          <div class="bio-content">
+            <span class="bio-tag">The Mother of the City</span>
+            <h2>Pastor Grace Erochukwu</h2>
+            <div class="bio-text">
+              <p>
+                A woman of virtue and deep intercession, Pastor Grace is the
+                heartbeat of the Winning City family. She leads the Women of
+                Grace ministry and is a pillar of support to the vision of the
+                church.
+              </p>
+              <br />
+              <p>
+                Her passion for family, parenting, and mentorship has raised
+                thousands of young women into their God-given purposes. She
+                believes that a strong church starts with a strong, God-fearing
+                home.
+              </p>
+            </div>
+          </div>
+        </section>
+
+        <!-- Children Section -->
+        <section class="children-section reveal">
+          <p class="bio-tag">The Heritage of the Lord</p>
+          <h2
+            style="
+              font-family: 'Playfair Display', serif;
+              font-size: 3rem;
+              color: var(--holy-gold);
+            "
+          >
+            The Erochukwu Children
+          </h2>
+
+          <div class="children-grid">
+            <!-- Child 1 -->
+            <div class="child-card">
+              <img
+                src="https://images.unsplash.com/photo-1539571696357-5a69c17a67c6?auto=format&fit=crop&w=400&q=80"
+                class="child-img"
+                alt="Child"
+              />
+              <h3>Samuel Jr.</h3>
+              <p>
+                A gifted worship leader and a student of the Word, Sam Jr.
+                serves in the youth ministry with a passion for music.
+              </p>
+            </div>
+
+            <!-- Child 2 -->
+            <div class="child-card">
+              <img
+                src="https://images.unsplash.com/photo-1494790108377-be9c29b29330?auto=format&fit=crop&w=400&q=80"
+                class="child-img"
+                alt="Child"
+              />
+              <h3>Faith Erochukwu</h3>
+              <p>
+                Leading with a heart for the vulnerable, Faith is active in our
+                community outreach and charity programs.
+              </p>
+            </div>
+
+            <!-- Child 3 -->
+            <div class="child-card">
+              <img
+                src="https://images.unsplash.com/photo-1506794778202-cad84cf45f1d?auto=format&fit=crop&w=400&q=80"
+                class="child-img"
+                alt="Child"
+              />
+              <h3>Daniel Erochukwu</h3>
+              <p>
+                The youngest of the family, Daniel is a bright light in the
+                children's church and an aspiring tech enthusiast.
+              </p>
+            </div>
+
+            <div class="child-card">
+              <img
+                src="https://images.unsplash.com/photo-1539571696357-5a69c17a67c6?auto=format&fit=crop&w=400&q=80"
+                class="child-img"
+                alt="Child"
+              />
+              <h3>Samuel Jr.</h3>
+              <p>
+                A gifted worship leader and a student of the Word, Sam Jr.
+                serves in the youth ministry with a passion for music.
+              </p>
+            </div>
+
+            <!-- Child 2 -->
+            <div class="child-card">
+              <img
+                src="https://images.unsplash.com/photo-1494790108377-be9c29b29330?auto=format&fit=crop&w=400&q=80"
+                class="child-img"
+                alt="Child"
+              />
+              <h3>Faith Erochukwu</h3>
+              <p>
+                Leading with a heart for the vulnerable, Faith is active in our
+                community outreach and charity programs.
+              </p>
+            </div>
+
+            <!-- Child 3 -->
+            <div class="child-card">
+              <img
+                src="https://images.unsplash.com/photo-1506794778202-cad84cf45f1d?auto=format&fit=crop&w=400&q=80"
+                class="child-img"
+                alt="Child"
+              />
+              <h3>Daniel Erochukwu</h3>
+              <p>
+                The youngest of the family, Daniel is a bright light in the
+                children's church and an aspiring tech enthusiast.
+              </p>
+            </div>
+            <div class="child-card">
+              <img
+                src="https://images.unsplash.com/photo-1539571696357-5a69c17a67c6?auto=format&fit=crop&w=400&q=80"
+                class="child-img"
+                alt="Child"
+              />
+              <h3>Samuel Jr.</h3>
+              <p>
+                A gifted worship leader and a student of the Word, Sam Jr.
+                serves in the youth ministry with a passion for music.
+              </p>
+            </div>
+
+            <!-- Child 2 -->
+            <div class="child-card">
+              <img
+                src="https://images.unsplash.com/photo-1494790108377-be9c29b29330?auto=format&fit=crop&w=400&q=80"
+                class="child-img"
+                alt="Child"
+              />
+              <h3>Faith Erochukwu</h3>
+              <p>
+                Leading with a heart for the vulnerable, Faith is active in our
+                community outreach and charity programs.
+              </p>
+            </div>
+          </div>
+        </section>
+      </main>
+      <div class="footer-spacer">
+        <p style="color: #444; letter-spacing: 5px">ESTABLISHED IN GLORY</p>
+      </div>
+      <div id="footer-sensor"></div>
+    </div>
+
+    <!-- Chatbot Container -->
+    <div id="chatbot-container" class="chatbot-container">
+      <div class="chatbot-header">
+        <h5>Chat with WLBC</h5>
+        <button id="close-chatbot" title="Close Chat">
+          <i data-lucide="x"></i>
+        </button>
+      </div>
+      <div class="chatbot-body">
+        <iframe
+          src="https://www.chatbase.co/chatbot-iframe/FObJVCn5bYaLctTwaKPNn"
+          width="100%"
+          style="height: 100%; border: none"
+        ></iframe>
+      </div>
+    </div>
+    <!-- Back to Top Button -->
+    <button id="back-to-top" title="Go to top">
+      <i data-lucide="arrow-up"></i>
+    </button>
+    <!-- Chatbot Toggle Button -->
+    <button id="chatbot-toggle" class="chatbot-toggle" title="Open Chat">
+      <i data-lucide="bot-message-square"></i>
+    </button>
+    <!-- Footer -->
+    <footer class="divine-dynamic-footer" id="holyFooter">
+      <div class="footer-grow-wrapper">
+        <div class="footer-inner-content">
+          <!-- Founder Section -->
+          <div class="footer-founder-aside">
+            <div class="founder-card">
+              <div class="founder-img-box">
+                <img src="image/1749187985514.jpg" alt="Rev. S.G Erochukwu" />
+              </div>
+              <div class="founder-badge">
+                <span class="founder-title">FOUNDER</span>
+                <span class="founder-name">Rev. S.G Erochukwu</span>
+              </div>
+            </div>
+          </div>
+
+          <div class="footer-right-panel">
+            <div class="footer-top-row">
+              <div class="footer-logo-box">
+                <div class="logo-space">
+                  <img
+                    src="image/logo.png"
+                    alt="Winning City Church Logo"
+                    class="f-logo"
+                  />
+                </div>
+                <p>WINNING CITY: GOD IS OUR RIGHTEOUSNESS.</p>
+              </div>
+              <!-- Daily Word Carousel -->
+              <div class="footer-word-carousel">
+                <div class="carousel-track" id="footerTrack">
+                  <div class="word-card active">
+                    <span>"The Lord is my Shepherd, I shall not want."</span>
+                  </div>
+                  <div class="word-card">
+                    <span>"Victory is ours through Christ who loves us."</span>
+                  </div>
+                  <div class="word-card">
+                    <span>"Be still, and know that I am God."</span>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <div class="footer-main-grid">
+              <div class="f-col">
+                <h4>Navigation</h4>
+                <a href="index.html">Home</a>
+                <a href="about.html">Ministries</a>
+                <a href="#">Giving</a>
+              </div>
+              <div class="f-col">
+                <h4>Contact Us</h4>
+                <div
+                  style="
+                    display: flex;
+                    align-items: flex-start;
+                    gap: 10px;
+                    margin-bottom: 15px;
+                    color: #ccc;
+                  "
+                >
+                  <i
+                    data-lucide="map-pin"
+                    style="
+                      color: var(--holy-gold);
+                      min-width: 20px;
+                      margin-top: 3px;
+                    "
+                  ></i>
+                  <span>Klm 4 Osusu Amaukwa Aba Abia state</span>
+                </div>
+                <div
+                  style="
+                    display: flex;
+                    align-items: center;
+                    gap: 10px;
+                    margin-bottom: 15px;
+                    color: #ccc;
+                  "
+                >
+                  <i
+                    data-lucide="phone"
+                    style="color: var(--holy-gold); min-width: 20px"
+                  ></i>
+                  <span>+2348029772375</span>
+                </div>
+                <div
+                  style="
+                    display: flex;
+                    align-items: center;
+                    gap: 10px;
+                    margin-bottom: 15px;
+                    color: #ccc;
+                  "
+                >
+                  <i
+                    data-lucide="mail"
+                    style="color: var(--holy-gold); min-width: 20px"
+                  ></i>
+                  <span>fountainsdata234@gmail.com</span>
+                </div>
+              </div>
+              <div class="f-col">
+                <h4>Join Us</h4>
+                <div class="social-links">
+                  <div class="wrapper">
+                    <div class="button">
+                      <div class="icon">
+                        <i class="fa fa-facebook"></i>
+                      </div>
+                    </div>
+                    <div class="button">
+                      <div class="icon">
+                        <i class="fa fa-twitter"></i>
+                      </div>
+                    </div>
+                    <div class="button">
+                      <div class="icon">
+                        <i class="fa fa-instagram"></i>
+                      </div>
+                    </div>
+                    <div class="button">
+                      <div class="icon">
+                        <i class="fa fa-youtube"></i>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <div class="footer-bottom-bar">
+              <p>&copy; 2025 Winning City Global. All rights reserved.</p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </footer>
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/gsap.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.js"></script>
+    <script src="script.js"></script>
+
+    <script>
+      // --- Scroll Reveal Animation Logic ---
+      const observerOptions = {
+        threshold: 0.15,
+      };
+
+      const observer = new IntersectionObserver((entries) => {
+        entries.forEach((entry) => {
+          if (entry.isIntersecting) {
+            entry.target.classList.add("show");
+          }
+        });
+      }, observerOptions);
+
+      const sectionObserver = new IntersectionObserver((entries) => {
+        entries.forEach((entry) => {
+          if (entry.isIntersecting) {
+            entry.target.classList.add("show");
+          }
+        });
+      }, observerOptions);
+
+      document.querySelectorAll(".reveal").forEach((el) => {
+        sectionObserver.observe(el);
+      });
+    </script>
+  </body>
+</html>
